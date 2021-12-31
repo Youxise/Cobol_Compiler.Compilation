@@ -7,7 +7,7 @@ typedef struct
    char name[40];
    char code[40];
    char type[40];
-   double val;
+   char val[40];
  } var_cst;
 
 
@@ -38,7 +38,7 @@ void initialisation()
 }
 
 
-void inserer (char entite[], char code[],char type[],float val,int i, int choice)
+void inserer (char entite[], char code[],char type[],char val[],int i, int choice)
 {
   switch (choice)
  { 
@@ -47,7 +47,7 @@ void inserer (char entite[], char code[],char type[],float val,int i, int choice
        strcpy(tab1[i].name,entite);
        strcpy(tab1[i].code,code);
 	   strcpy(tab1[i].type,type);
-	   tab1[i].val=val;
+	   strcpy(tab1[i].val,val);
 	   break;
 
    case 1:
@@ -67,7 +67,7 @@ void inserer (char entite[], char code[],char type[],float val,int i, int choice
 }
 
 
-void rechercher (char entite[], char code[],char type[],float val,int choice)	
+void rechercher (char entite[], char code[],char type[],char val[],int choice)	
 {
 
 int j,i;
@@ -129,7 +129,7 @@ int Recherche_position(char entite[])
 		
 }
 
-double recheche_val(char entite[])
+/*char* recheche_val(char entite[])
 {
  int x=Recherche_position(entite);
  if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
@@ -138,7 +138,7 @@ double recheche_val(char entite[])
 
 }
 
-double modifier_val(char entite[],)
+char* modifier_val(char entite[],)
 {
  int x=Recherche_position(entite);
  if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
@@ -146,14 +146,14 @@ double modifier_val(char entite[],)
  return tab1[x].val;
 
 }
-
+*/
 
 
 int verifIDF(char entite[])
 {
  int x=Recherche_position(entite);
  if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
- else if ((strcmp(tab1[x].code,"IdfCst")==0) && (tab1[x].val!=99999) ) return 1;
+ else if ((strcmp(tab1[x].code,"IdfCst")==0) && (strcmp(tab1[x].val,"")!=0) ) return 1;
 
 }
 
@@ -269,7 +269,7 @@ for(i=0;i<1000;i++)
 	//strcpy(tab1[i].type,"type");
     if(tab1[i].state==1)
       { 
-        printf("\t|          %10s           |%15s | %12s | %12f\n",tab1[i].name,tab1[i].code,tab1[i].type,tab1[i].val);
+        printf("\t|          %10s           |%15s | %12s | %12s\n",tab1[i].name,tab1[i].code,tab1[i].type,tab1[i].val);
          
       }
 }

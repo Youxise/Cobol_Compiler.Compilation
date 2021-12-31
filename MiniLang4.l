@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-//#include"ts.h"
+#include"ts.h"
 int nb=1;
 int col=1;
 

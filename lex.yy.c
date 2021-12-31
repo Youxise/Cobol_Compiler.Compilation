@@ -521,14 +521,14 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "MiniLang3.l"
+#line 1 "L.l"
 #define INITIAL 0
-#line 2 "MiniLang3.l"
+#line 2 "L.l"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"syntaxique.tab.h"
-#include"ts.h"
+#include"S.tab.h"
+#include"T.h"
 extern nb;
 extern col;
 extern YYSTYPE yylval;
@@ -684,7 +684,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 23 "MiniLang3.l"
+#line 23 "L.l"
 
 #line 690 "lex.yy.c"
 
@@ -771,339 +771,339 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "MiniLang3.l"
+#line 24 "L.l"
 { 	  
-									rechercher(yytext,"Mot cle","",0,1);
+									rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_ident; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 28 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 28 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_prog; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 31 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 31 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_data; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 34 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 34 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_work; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 37 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 37 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_proc; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 40 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 40 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_stopr; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 43 "MiniLang3.l"
-{ 	rechercher(yytext,"Mot cle","",0,1);
+#line 43 "L.l"
+{ 	rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_et; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 46 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 46 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_ou; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 49 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 49 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_non; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 52 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 52 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_sup; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 55 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 55 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_inf; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 58 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 58 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_supe; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 61 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 61 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_infe; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 64 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 64 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_equi; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 67 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 67 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return mc_diff; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 70 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 70 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_const; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 73 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 73 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return mc_int; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 78 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 78 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return mc_float; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 83 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 83 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return mc_char; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 88 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 88 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return mc_str; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 93 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 93 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_line; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 96 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 96 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_size; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 99 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 99 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_type; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 102 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 102 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_acc; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 105 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 105 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_disp; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 108 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 108 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_if; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 111 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 111 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_else; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 114 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);	
+#line 114 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);	
 									col=col+strlen(yytext);	return mc_move; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 117 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 117 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_to; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 120 "MiniLang3.l"
-{ 		rechercher(yytext,"Mot cle","",0,1);
+#line 120 "L.l"
+{ 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_end; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 123 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 123 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return pvg; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 126 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 126 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return deup;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 129 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);	
+#line 129 "L.l"
+{ 		rechercher(yytext,"sep","","",2);	
 									col=col+strlen(yytext);	return egal; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 132 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 132 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);	return aff; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 135 "MiniLang3.l"
-{ 	    rechercher(yytext,"sep","",0,2);
+#line 135 "L.l"
+{ 	    rechercher(yytext,"sep","","",2);
 									yylval.str=strdup(yytext); 
 							    	col=col+strlen(yytext);	return add; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 139 "MiniLang3.l"
-{ 	    rechercher(yytext,"sep","",0,2);
+#line 139 "L.l"
+{ 	    rechercher(yytext,"sep","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return sous; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 143 "MiniLang3.l"
-{      rechercher(yytext,"sep","",0,2);
+#line 143 "L.l"
+{      rechercher(yytext,"sep","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return mult; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 147 "MiniLang3.l"
-{ 	    rechercher(yytext,"sep","",0,2);
+#line 147 "L.l"
+{ 	    rechercher(yytext,"sep","","",2);
 						        	yylval.str=strdup(yytext); 
 									col=col+strlen(yytext);	return divi; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 151 "MiniLang3.l"
-{      rechercher(yytext,"sep","",0,2);
+#line 151 "L.l"
+{      rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext); return point; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 154 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 154 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext); return parG; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 157 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 157 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext); return parD; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 160 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 160 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext); return sepv; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 163 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 163 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return gui1; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 166 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 166 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return doll;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 169 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 169 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return pcen;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 172 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 172 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return arob;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 175 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 175 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return ecom;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 178 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 178 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return hash;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 181 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 181 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return gui2;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 184 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 184 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext);  return apos;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 187 "MiniLang3.l"
-{ 		rechercher(yytext,"sep","",0,2);
+#line 187 "L.l"
+{ 		rechercher(yytext,"sep","","",2);
 									col=col+strlen(yytext); return virg; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 190 "MiniLang3.l"
+#line 190 "L.l"
 
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 191 "MiniLang3.l"
+#line 191 "L.l"
 {	yylval.str=strdup(yytext);
 								return disp;}	
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 194 "MiniLang3.l"
+#line 194 "L.l"
 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
-															rechercher(yytext,"cst","INTEGER.",atof(yytext),0);
+															rechercher(yytext,"cst","INTEGER.",yytext,0);
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
@@ -1112,32 +1112,32 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 202 "MiniLang3.l"
-{ 		rechercher(yytext,"cst","FLOAT.",atof(yytext),0);
+#line 202 "L.l"
+{ 		rechercher(yytext,"cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 207 "MiniLang3.l"
-{ 		rechercher(yytext,"cst","CHAR.",99999,0);
+#line 207 "L.l"
+{ 		rechercher(yytext,"cst","CHAR.","",0);
 									col=col+strlen(yytext);
 									yylval.str=strdup(yytext);	
 									return cstch;	 }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 212 "MiniLang3.l"
-{ 	    rechercher(yytext,"cst","STRING.",99999,0);
+#line 212 "L.l"
+{ 	    rechercher(yytext,"cst","STRING.","",0);
 							        col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return cstst;	 }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 217 "MiniLang3.l"
-{ if (yyleng<9) { 		rechercher(yytext,"idf","",99999,0);
+#line 217 "L.l"
+{ if (yyleng<9) { 		rechercher(yytext,"idf","","",0);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }
@@ -1145,22 +1145,22 @@ YY_RULE_SETUP
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 223 "MiniLang3.l"
+#line 223 "L.l"
 col=col+strlen(yytext);
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 224 "MiniLang3.l"
+#line 224 "L.l"
 { nb++; col=1; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 225 "MiniLang3.l"
+#line 225 "L.l"
 printf(" Erreur lexicale, ligne : %d, colonne : %d : %s \n",nb,col,yytext);
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 226 "MiniLang3.l"
+#line 226 "L.l"
 ECHO;
 	YY_BREAK
 #line 1167 "lex.yy.c"
@@ -2049,5 +2049,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 226 "MiniLang3.l"
+#line 226 "L.l"
 
