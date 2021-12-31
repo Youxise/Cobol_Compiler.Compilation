@@ -25,10 +25,10 @@ dispstr \“[^\#$%&]+[#$%&]\”
 									rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_ident; }
 
-"PROGRAM-ID"				 { 		rechercher(yytext,"Mot cle","","",1);
+"PROGRAM-ID."				 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_prog; }
 
-"DATA DIVISION."			 	 { 		rechercher(yytext,"Mot cle","","",1);
+"DATA DIVISION."			 	 { 	rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_data; }
 
 "WORKING-STORAGE SECTION."	 { 		rechercher(yytext,"Mot cle","","",1);
@@ -49,22 +49,22 @@ dispstr \“[^\#$%&]+[#$%&]\”
 NOT							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_non; }
 
-".G."							 { 		rechercher(yytext,"sep","","",2);
+".G."							 { 	rechercher(yytext,"Superieur","","",2);
 									col=col+strlen(yytext);	return mc_sup; }
 
-".L."							 { 		rechercher(yytext,"sep","","",2);
+".L."							 { 	rechercher(yytext,"Inferieur","","",2);
 									col=col+strlen(yytext);	return mc_inf; }
 
-".GE."						 { 		rechercher(yytext,"sep","","",2);
+".GE."						 { 		rechercher(yytext,"Superieur ou Egal","","",2);
 									col=col+strlen(yytext);	return mc_supe; }
 
-".LE."						 { 		rechercher(yytext,"sep","","",2);
+".LE."						 { 		rechercher(yytext,"Inferieur ou Egal","","",2);
 									col=col+strlen(yytext);	return mc_infe; }
 
-".EQ."						 { 		rechercher(yytext,"sep","","",2);
+".EQ."						 { 		rechercher(yytext,"Equivalent","","",2);
 									col=col+strlen(yytext);	return mc_equi; }
 
-".DI."						 { 		rechercher(yytext,"sep","","",2);
+".DI."						 { 		rechercher(yytext,"Different","","",2);
 									col=col+strlen(yytext);	return mc_diff; }
 
 CONST 						 { 		rechercher(yytext,"Mot cle","","",1);
@@ -120,71 +120,71 @@ TO							 { 		rechercher(yytext,"Mot cle","","",1);
 END							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_end; }
 
-";" 						 { 		rechercher(yytext,"sep","","",2);
+";" 						 { 		rechercher(yytext,"Point virgule","","",2);
 									col=col+strlen(yytext);	return pvg; }
 
-":" 						 { 		rechercher(yytext,"sep","","",2);
+":" 						 { 		rechercher(yytext,"Deux points","","",2);
 									col=col+strlen(yytext);	return deup;}
 
-"==" 						 { 		rechercher(yytext,"sep","","",2);	
+"==" 						 { 		rechercher(yytext,"Egal","","",2);	
 									col=col+strlen(yytext);	return egal; }
 
-"=" 						 { 		rechercher(yytext,"sep","","",2);
+"=" 						 { 		rechercher(yytext,"Affectation","","",2);
 									col=col+strlen(yytext);	return aff; }
 
-"+" 						 { 	    rechercher(yytext,"sep","","",2);
+"+" 						 { 	    rechercher(yytext,"Plus","","",2);
 									yylval.str=strdup(yytext); 
 							    	col=col+strlen(yytext);	return add; }
 
-"-" 						 { 	    rechercher(yytext,"sep","","",2);
+"-" 						 { 	    rechercher(yytext,"Moins","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return sous; }
 
-"*" 						 {      rechercher(yytext,"sep","","",2);
+"*" 						 {      rechercher(yytext,"Fois","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return mult; }
 
-"/" 						 { 	    rechercher(yytext,"sep","","",2);
+"/" 						 { 	    rechercher(yytext,"Divise","","",2);
 						        	yylval.str=strdup(yytext); 
 									col=col+strlen(yytext);	return divi; }
 
-\.						 	 {      rechercher(yytext,"sep","","",2);
+\.						 	 {      rechercher(yytext,"Point","","",2);
 									col=col+strlen(yytext); return point; }
 
-"("							 { 		rechercher(yytext,"sep","","",2);
+"("							 { 		rechercher(yytext,"Parenthese ouvrante","","",2);
 									col=col+strlen(yytext); return parG; }
 
-")"							 { 		rechercher(yytext,"sep","","",2);
+")"							 { 		rechercher(yytext,"Parenthese fermante","","",2);
 									col=col+strlen(yytext); return parD; }
 
-"|"							 { 		rechercher(yytext,"sep","","",2);
+"|"							 { 		rechercher(yytext,"Barre","","",2);
 									col=col+strlen(yytext); return sepv; }
 
-"“"							{ 		rechercher(yytext,"sep","","",2);
+"“"							{ 		rechercher(yytext,"Guillemet ouvrant","","",2);
 									col=col+strlen(yytext);  return gui1; }
 
-"$"							{ 		rechercher(yytext,"sep","","",2);
+"$"							{ 		rechercher(yytext,"Dollar","","",2);
 									col=col+strlen(yytext);  return doll;}
 
-"%"							{ 		rechercher(yytext,"sep","","",2);
+"%"							{ 		rechercher(yytext,"Pourcent","","",2);
 									col=col+strlen(yytext);  return pcen;}
 
-"@"							{ 		rechercher(yytext,"sep","","",2);
+"@"							{ 		rechercher(yytext,"Arobase","","",2);
 									col=col+strlen(yytext);  return arob;}
 
-"&"							{ 		rechercher(yytext,"sep","","",2);
+"&"							{ 		rechercher(yytext,"Ecommercial","","",2);
 									col=col+strlen(yytext);  return ecom;}
 
-"#"							{ 		rechercher(yytext,"sep","","",2);
+"#"							{ 		rechercher(yytext,"Hashtag","","",2);
 									col=col+strlen(yytext);  return hash;}
 
-"”"							{ 		rechercher(yytext,"sep","","",2);
+"”"							{ 		rechercher(yytext,"Guillemet fermant","","",2);
 									col=col+strlen(yytext);  return gui2;}
 
-"'"							{ 		rechercher(yytext,"sep","","",2);
+"'"							{ 		rechercher(yytext,"Apostrophe","","",2);
 									col=col+strlen(yytext);  return apos;}
 
-","							 { 		rechercher(yytext,"sep","","",2);
+","							 { 		rechercher(yytext,"Virgule","","",2);
 									col=col+strlen(yytext); return virg; }
 
 {com}
@@ -192,29 +192,29 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 								return disp;}	
 
 {cstint} 					 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
-															rechercher(yytext,"cst","INTEGER.",yytext,0);
+															rechercher(yytext,"Cst","INTEGER.",yytext,0);
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
 									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",nb,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
-{cstfloat} 					 { 		rechercher(yytext,"cst","FLOAT.",yytext,0);
+{cstfloat} 					 { 		rechercher(yytext,"Cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
 
-{cstchar} 					 { 		rechercher(yytext,"cst","CHAR.","",0);
+{cstchar} 					 { 		rechercher(yytext,"Cst","CHAR.","",0);
 									col=col+strlen(yytext);
 									yylval.str=strdup(yytext);	
 									return cstch;	 }
 
-{cststr} 					 { 	    rechercher(yytext,"cst","STRING.","",0);
+{cststr} 					 { 	    rechercher(yytext,"Cst","STRING.","",0);
 							        col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return cstst;	 }
 
-{idf} 						{ if (yyleng<9) { 		rechercher(yytext,"idf","","",0);
+{idf} 						{ if (yyleng<9) { 		rechercher(yytext,"IDF","","",0);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }

@@ -961,131 +961,131 @@ YY_RULE_SETUP
 case 31:
 YY_RULE_SETUP
 #line 123 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Point virgule","","",2);
 									col=col+strlen(yytext);	return pvg; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 126 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Deux points","","",2);
 									col=col+strlen(yytext);	return deup;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 129 "L.l"
-{ 		rechercher(yytext,"sep","","",2);	
+{ 		rechercher(yytext,"Egal","","",2);	
 									col=col+strlen(yytext);	return egal; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 132 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Affectation","","",2);
 									col=col+strlen(yytext);	return aff; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 135 "L.l"
-{ 	    rechercher(yytext,"sep","","",2);
+{ 	    rechercher(yytext,"Plus","","",2);
 									yylval.str=strdup(yytext); 
 							    	col=col+strlen(yytext);	return add; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 139 "L.l"
-{ 	    rechercher(yytext,"sep","","",2);
+{ 	    rechercher(yytext,"Moins","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return sous; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 143 "L.l"
-{      rechercher(yytext,"sep","","",2);
+{      rechercher(yytext,"Fois","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return mult; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 147 "L.l"
-{ 	    rechercher(yytext,"sep","","",2);
+{ 	    rechercher(yytext,"Divise","","",2);
 						        	yylval.str=strdup(yytext); 
 									col=col+strlen(yytext);	return divi; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 151 "L.l"
-{      rechercher(yytext,"sep","","",2);
+{      rechercher(yytext,"Point","","",2);
 									col=col+strlen(yytext); return point; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 154 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Parenthese ouvrante","","",2);
 									col=col+strlen(yytext); return parG; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 157 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Parenthese fermante","","",2);
 									col=col+strlen(yytext); return parD; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 160 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Barre","","",2);
 									col=col+strlen(yytext); return sepv; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 163 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Guillemet ouvrant","","",2);
 									col=col+strlen(yytext);  return gui1; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
 #line 166 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Dollar","","",2);
 									col=col+strlen(yytext);  return doll;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
 #line 169 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Pourcent","","",2);
 									col=col+strlen(yytext);  return pcen;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
 #line 172 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Arobase","","",2);
 									col=col+strlen(yytext);  return arob;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
 #line 175 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Ecommercial","","",2);
 									col=col+strlen(yytext);  return ecom;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
 #line 178 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Hashtag","","",2);
 									col=col+strlen(yytext);  return hash;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 181 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Guillemet fermant","","",2);
 									col=col+strlen(yytext);  return gui2;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
 #line 184 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Apostrophe","","",2);
 									col=col+strlen(yytext);  return apos;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
 #line 187 "L.l"
-{ 		rechercher(yytext,"sep","","",2);
+{ 		rechercher(yytext,"Virgule","","",2);
 									col=col+strlen(yytext); return virg; }
 	YY_BREAK
 case 52:
@@ -1103,7 +1103,7 @@ case 54:
 YY_RULE_SETUP
 #line 194 "L.l"
 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
-															rechercher(yytext,"cst","INTEGER.",yytext,0);
+															rechercher(yytext,"Cst","INTEGER.",yytext,0);
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
@@ -1113,7 +1113,7 @@ YY_RULE_SETUP
 case 55:
 YY_RULE_SETUP
 #line 202 "L.l"
-{ 		rechercher(yytext,"cst","FLOAT.",yytext,0);
+{ 		rechercher(yytext,"Cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
@@ -1121,7 +1121,7 @@ YY_RULE_SETUP
 case 56:
 YY_RULE_SETUP
 #line 207 "L.l"
-{ 		rechercher(yytext,"cst","CHAR.","",0);
+{ 		rechercher(yytext,"Cst","CHAR.","",0);
 									col=col+strlen(yytext);
 									yylval.str=strdup(yytext);	
 									return cstch;	 }
@@ -1129,7 +1129,7 @@ YY_RULE_SETUP
 case 57:
 YY_RULE_SETUP
 #line 212 "L.l"
-{ 	    rechercher(yytext,"cst","STRING.","",0);
+{ 	    rechercher(yytext,"Cst","STRING.","",0);
 							        col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
 									return cstst;	 }
@@ -1137,7 +1137,7 @@ YY_RULE_SETUP
 case 58:
 YY_RULE_SETUP
 #line 217 "L.l"
-{ if (yyleng<9) { 		rechercher(yytext,"idf","","",0);
+{ if (yyleng<9) { 		rechercher(yytext,"IDF","","",0);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }

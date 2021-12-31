@@ -1520,7 +1520,7 @@ yyreduce:
 #line 36 "S.y"
     {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],(yyvsp[(2) - (2)].str));
-                            else  printf ("Erreur semantique: variable %s deja declaree\n",vars[n]);
+                            else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,vars[n]);
                           }
                           i=0;;}
     break;
@@ -1531,7 +1531,7 @@ yyreduce:
 #line 42 "S.y"
     {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],(yyvsp[(2) - (2)].str));
-                            else  printf ("Erreur semantique: variable %s deja declaree\n",vars[n]);
+                            else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,vars[n]);
                           }
                           i=0;;}
     break;
@@ -1557,7 +1557,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 60 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (2)].str))==0) {insererTYPE((yyvsp[(1) - (2)].str),(yyvsp[(2) - (2)].str)); insererCODE((yyvsp[(1) - (2)].str));}
-                    else  printf ("Erreur semantique: variable %s deja declaree\n",(yyvsp[(1) - (2)].str));;}
+                    else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,(yyvsp[(1) - (2)].str));;}
     break;
 
   case 12:
@@ -1565,7 +1565,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 63 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (4)].str))==0) {insererTYPE((yyvsp[(1) - (4)].str),cstype); insererCODE((yyvsp[(1) - (4)].str));}
-                    else  printf ("Erreur semantique: variable %s deja declaree\n",(yyvsp[(1) - (4)].str));;}
+                    else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,(yyvsp[(1) - (4)].str));;}
     break;
 
   case 13:
@@ -1636,7 +1636,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 83 "S.y"
-    {  if (((yyvsp[(3) - (6)].entier)<1)||((yyvsp[(6) - (6)].entier)<1)) printf ("Erreur semantique, ligne %d, colonne %d\n",nb,col);
+    {  if (((yyvsp[(3) - (6)].entier)<0)||((yyvsp[(6) - (6)].entier)<1)) printf ("Erreur semantique ( Taille du tableau ou borne inferieure hors limites ), ligne %d, colonne %d : %s ou %s \n",nb,col,(yyvsp[(3) - (6)].entier),(yyvsp[(6) - (6)].entier));
                                                   strcpy(vars[i],(yyvsp[(1) - (6)].str));
                                                   i++;;}
     break;
@@ -1645,17 +1645,17 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 96 "S.y"
-    { if (doubleDeclaration((yyvsp[(8) - (10)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(8) - (10)].str));
-                                                                  if(strcmp((char*)TypeEntite((yyvsp[(8) - (10)].str)),sigtype)!=0) printf ("Erreur miaw");;}
+    { if (doubleDeclaration((yyvsp[(8) - (10)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(8) - (10)].str));
+                                                                  if(strcmp((char*)TypeEntite((yyvsp[(8) - (10)].str)),sigtype)!=0) printf ("Erreur semantique ( Incompatibilite de types ), ligne %d, colonne %d : %s",nb,col,(yyvsp[(8) - (10)].str));;}
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
 #line 99 "S.y"
-    { if (doubleDeclaration((yyvsp[(7) - (9)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(7) - (9)].str));
+    { if (doubleDeclaration((yyvsp[(7) - (9)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(7) - (9)].str));
                                                     /*if (nbSIGNE(disp,sigtype)!=1) printf ("Erreur ba33");
-                                                    else */ if(strcmp((char*)TypeEntite((yyvsp[(7) - (9)].str)),sigtype)!=0) printf ("Erreur miaw");               ;}
+                                                    else*/ if(strcmp((char*)TypeEntite((yyvsp[(7) - (9)].str)),sigtype)!=0) printf ("Erreur semantique ( Incompatibilite de types ), ligne %d, colonne %d : %s",nb,col,(yyvsp[(7) - (9)].str));               ;}
     break;
 
   case 32:
@@ -1690,40 +1690,40 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 116 "S.y"
-    { if ((doubleDeclaration((yyvsp[(2) - (6)].str))==0)||(doubleDeclaration((yyvsp[(4) - (6)].str))==0)) printf ("Erreur semantique: variable %s ou %s non declaree\n",(yyvsp[(2) - (6)].str),(yyvsp[(4) - (6)].str));;}
+    { if ((doubleDeclaration((yyvsp[(2) - (6)].str))==0)||(doubleDeclaration((yyvsp[(4) - (6)].str))==0)) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s ou %s\n",nb,col,(yyvsp[(2) - (6)].str),(yyvsp[(4) - (6)].str));;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
 #line 117 "S.y"
-    { if (doubleDeclaration((yyvsp[(2) - (6)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(2) - (6)].str));;}
+    { if (doubleDeclaration((yyvsp[(2) - (6)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(2) - (6)].str));;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
 #line 118 "S.y"
-    { if (doubleDeclaration((yyvsp[(4) - (6)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(4) - (6)].str));;}
+    { if (doubleDeclaration((yyvsp[(4) - (6)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(4) - (6)].str));;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
 #line 121 "S.y"
-    { if (verifIDF((yyvsp[(1) - (4)].str))==1) printf ("Erreur semantique ( une Constante ne peut pas changer de valeur)\n");
-                                          if (doubleDeclaration((yyvsp[(1) - (4)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(1) - (4)].str));
-                                          else {b=1; printf("idff= %s\n",(yyvsp[(1) - (4)].str));
-                                          strcpy(cstype,(char*)TypeEntite((yyvsp[(1) - (4)].str)));
-                                          for(n=0;n<j;n++) {
+    { if (verifIDF((yyvsp[(1) - (4)].str))==1) printf ("Erreur semantique ( Constante ne peut pas changer de valeur), ligne %d, colonne %d : %s\n",nb,col,(yyvsp[(1) - (4)].str));
+                                          if (doubleDeclaration((yyvsp[(1) - (4)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(1) - (4)].str));
+                                          //else {b=1; printf("idff= %s\n",$1);
+                                          //strcpy(cstype,(char*)TypeEntite($1));
+                                         /* for(n=0;n<j;n++) {
                                             
-                                            if(strcmp((char*)TypeEntite((yyvsp[(1) - (4)].str)),(char*)TypeEntite(types[n]))!=0) {
+                                            if(strcmp((char*)TypeEntite($1),(char*)TypeEntite(types[n]))!=0) {
                                              printf ("Erreur semantique ( Incompatibilite ), ligne %d, colonne %d dans l'entite : %s\n",nb,col,types[n]);
                                              n=j; }
 
                                           }
                                           j=0; 
-                                          } ;}
+                                          }*/ ;}
     break;
 
   case 45:
@@ -1758,22 +1758,14 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 147 "S.y"
-    {if (doubleDeclaration((yyvsp[(1) - (1)].str))==0) printf ("Erreur semantique: variable %s non declaree\n",(yyvsp[(1) - (1)].str));
+    {if (doubleDeclaration((yyvsp[(1) - (1)].str))==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,(yyvsp[(1) - (1)].str));
          // else{if((a==1) && (recheche_val($1)==0)) {printf("erreur div par 0, ligne %d, colonne %d \n",nb,col); a=0;}
 
           if((b==1) && strcmp((char*)TypeEntite((yyvsp[(1) - (1)].str)),cstype)!=0)  {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col); b=0; strcpy(cstype,"");}
           
-          strcpy(types[j],(yyvsp[(1) - (1)].str));
-              j++;
+        //  strcpy(types[j],$1);
+          //    j++;
         ;}
-    break;
-
-  case 50:
-
-/* Line 1455 of yacc.c  */
-#line 155 "S.y"
-    {strcpy(types[j],(yyvsp[(1) - (1)].str));
-              j++;;}
     break;
 
   case 51:
@@ -1781,11 +1773,11 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 159 "S.y"
     { printf("csti=%d\n",(yyvsp[(1) - (1)].entier));
-              if(((yyvsp[(1) - (1)].entier)==0) && (a==1)) {printf("Erreur semantique ( div par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
+              if(((yyvsp[(1) - (1)].entier)==0) && (a==1)) {printf("Erreur semantique ( division par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
               
               if((b==1) && strcmp((char*)TypeEntite((yyvsp[(1) - (1)].entier)),cstype)!=0)  {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col); b=0;strcpy(cstype,"");}
               //itoa($1, buf, 10); $$=buf;
-             sprintf((yyval.str),"%d",(yyvsp[(1) - (1)].entier)); 
+            // sprintf($$,"%d",$1); 
                    ;}
     break;
 
@@ -1794,18 +1786,18 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 166 "S.y"
     { printf("cstf=%f\n",(yyvsp[(1) - (1)].reel));
-              if(((yyvsp[(1) - (1)].reel)==0) && (a==1)) {printf("Erreur semantique ( div par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
+              if(((yyvsp[(1) - (1)].reel)==0) && (a==1)) {printf("Erreur semantique ( division par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
               
               if((b==1) && strcmp((char*)TypeEntite((yyvsp[(1) - (1)].reel)),cstype)!=0) {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col);b=0;strcpy(cstype,"");}
               //gcvt($1, 10, buf); $$=buf;
-            sprintf((yyval.str),"%d",(yyvsp[(1) - (1)].reel));   
+            //sprintf($$,"%d",$1);   
               ;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1809 "S.tab.c"
+#line 1801 "S.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);

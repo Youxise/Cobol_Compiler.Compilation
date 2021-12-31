@@ -15,7 +15,7 @@ typedef struct
 { 
    int state; 
    char name[40];
-   char type[20];
+   char type[30];
 } MC_sep;
 
 
@@ -201,17 +201,17 @@ Signes[0]='#';
 */
 
 
-/*
+
 int nbSIGNE (char chaine[],char TYPE[])
 {
   int nb=0,i=0;
   for (i ; i<strlen(chaine) ; i++ ) {
-    if ((strcmp((char)chaine[i],'#')==0)||(strcmp(chaine[i],'%')==0)||(strcmp(chaine[i],'$')==0)||(strcmp(chaine[i],'&')==0)) {
+    if ((strcmp((char)chaine[i],"#")==0)||(strcmp(chaine[i],"%")==0)||(strcmp(chaine[i],"$")==0)||(strcmp(chaine[i],"&")==0)) {
     nb++;
-    if (strcmp(chaine[i],'%')==0) strcpy(TYPE,"CHAR.");
-    if (strcmp(chaine[i],'#')==0) strcpy(TYPE,"FLOAT.");
-    if (strcmp(chaine[i],'&')==0) strcpy(TYPE,"INTEGER.");
-    if (strcmp(chaine[i],'$')==0) strcpy(TYPE,"STRING.");
+    if (strcmp(chaine[i],"%")==0) strcpy(TYPE,"CHAR.");
+    if (strcmp(chaine[i],"#")==0) strcpy(TYPE,"FLOAT.");
+    if (strcmp(chaine[i],"&")==0) strcpy(TYPE,"INTEGER.");
+    if (strcmp(chaine[i],"$")==0) strcpy(TYPE,"STRING.");
     if (nb>1) return -1;
     }
   }
@@ -220,7 +220,7 @@ int nbSIGNE (char chaine[],char TYPE[])
     else return -1;
 
 }
-*/
+
 
 
 char * TypeEntite(char entite[])
@@ -291,13 +291,13 @@ for(i=0;i<40;i++)
 printf("\n\t/***************Table des symboles separateurs*************/\n");
 
 printf("__________________________________________________________\n");
-printf("\t|         NomEntite         |      CodeEntite      | \n");
+printf("\t|         NomEntite         |      CodeEntite      \t \n");
 printf("___________________________________________________________\n");
   
 for(i=0;i<40;i++)
     if(tab2[i].state==1)
       { 
-        printf("\t|         %10s         | %12s \t| \n",tab2[i].name,tab2[i].type );
+        printf("\t|         %10s         | %12s \t \n",tab2[i].name,tab2[i].type );
         
       }
 

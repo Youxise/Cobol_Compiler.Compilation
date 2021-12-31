@@ -27,7 +27,7 @@ char* str;
 %left     mult divi 
 %start S
 %%
-S : mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr   {    printf ("\n Programme syntaxiquement correct !\n");    YYACCEPT;}
+S : mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr   {    printf ("\n --- Programme syntaxiquement correct --- !\n");    YYACCEPT;}
 ;
 
 LIST_DEC : DEC LIST_DEC
@@ -35,13 +35,13 @@ LIST_DEC : DEC LIST_DEC
 
 DEC : DEC_VAR TYPE2 {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],$2);
-                            else  printf ("Erreur semantique: variable %s deja declaree\n",vars[n]);
+                            else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,vars[n]);
                           }
                           i=0;}
     | DEC_CST 
     | DEC_TAB TYPE2 {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],$2);
-                            else  printf ("Erreur semantique: variable %s deja declaree\n",vars[n]);
+                            else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,vars[n]);
                           }
                           i=0;}
 ;
@@ -58,10 +58,10 @@ DEC_CST :  mc_const A;
 
 
 A: idff TYPE2 { if (doubleDeclaration($1)==0) {insererTYPE($1,$2); insererCODE($1);}
-                    else  printf ("Erreur semantique: variable %s deja declaree\n",$1);}
+                    else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,$1);}
 
   | idff aff CST point { if (doubleDeclaration($1)==0) {insererTYPE($1,cstype); insererCODE($1);}
-                    else  printf ("Erreur semantique: variable %s deja declaree\n",$1);}
+                    else  printf ("Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s\n",nb,col,$1);}
 ;
 
 
@@ -80,7 +80,7 @@ CST : csti {strcpy(cstype,"INTEGER.");}
 DEC_TAB : idff sepv DEC_TAB { strcpy(vars[i],$1);
                               i++;}
 
-        | idff mc_line csti virg mc_size csti {  if (($3<1)||($6<1)) printf ("Erreur semantique, ligne %d, colonne %d\n",nb,col);
+        | idff mc_line csti virg mc_size csti {  if (($3<0)||($6<1)) printf ("Erreur semantique ( Taille du tableau ou borne inferieure hors limites ), ligne %d, colonne %d : %s ou %s \n",nb,col,$3,$6);
                                                   strcpy(vars[i],$1);
                                                   i++;}
 ;
@@ -93,12 +93,12 @@ LIST_INSTR : INSTR LIST_INSTR
 INSTR : AFFECTATION | IF_STAT | BOUCLE | LECTURE | ECRITURE
 ;
 
-LECTURE : mc_acc parG gui1 SIGNE gui2 deup arob idff parD point { if (doubleDeclaration($8)==0) printf ("Erreur semantique: variable %s non declaree\n",$8);
-                                                                  if(strcmp((char*)TypeEntite($8),sigtype)!=0) printf ("Erreur miaw");}
+LECTURE : mc_acc parG gui1 SIGNE gui2 deup arob idff parD point { if (doubleDeclaration($8)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$8);
+                                                                  if(strcmp((char*)TypeEntite($8),sigtype)!=0) printf ("Erreur semantique ( Incompatibilite de types ), ligne %d, colonne %d : %s",nb,col,$8);}
 
-ECRITURE : mc_disp parG gui1 SIGNE gui2 deup idff parD point { if (doubleDeclaration($7)==0) printf ("Erreur semantique: variable %s non declaree\n",$7);
+ECRITURE : mc_disp parG gui1 SIGNE gui2 deup idff parD point { if (doubleDeclaration($7)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$7);
                                                     /*if (nbSIGNE(disp,sigtype)!=1) printf ("Erreur ba33");
-                                                    else */ if(strcmp((char*)TypeEntite($7),sigtype)!=0) printf ("Erreur miaw");               }
+                                                    else*/ if(strcmp((char*)TypeEntite($7),sigtype)!=0) printf ("Erreur semantique ( Incompatibilite de types ), ligne %d, colonne %d : %s",nb,col,$7);               }
 
 SIGNE : ecom {strcpy(sigtype,"STRING.");}
       | hash {strcpy(sigtype,"CHAR.");}
@@ -113,16 +113,16 @@ B : mc_end
   | mc_else deup LIST_INSTR mc_end
 ;
 
-BOUCLE : mc_move idff mc_to idff LIST_INSTR mc_end { if ((doubleDeclaration($2)==0)||(doubleDeclaration($4)==0)) printf ("Erreur semantique: variable %s ou %s non declaree\n",$2,$4);}
-       | mc_move idff mc_to csti LIST_INSTR mc_end { if (doubleDeclaration($2)==0) printf ("Erreur semantique: variable %s non declaree\n",$2);}
-       | mc_move csti mc_to idff LIST_INSTR mc_end { if (doubleDeclaration($4)==0) printf ("Erreur semantique: variable %s non declaree\n",$4);}
+BOUCLE : mc_move idff mc_to idff LIST_INSTR mc_end { if ((doubleDeclaration($2)==0)||(doubleDeclaration($4)==0)) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s ou %s\n",nb,col,$2,$4);}
+       | mc_move idff mc_to csti LIST_INSTR mc_end { if (doubleDeclaration($2)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$2);}
+       | mc_move csti mc_to idff LIST_INSTR mc_end { if (doubleDeclaration($4)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$4);}
 ;
 
-AFFECTATION : idff aff EXPRESSION point { if (verifIDF($1)==1) printf ("Erreur semantique ( une Constante ne peut pas changer de valeur)\n");
-                                          if (doubleDeclaration($1)==0) printf ("Erreur semantique: variable %s non declaree\n",$1);
+AFFECTATION : idff aff EXPRESSION point { if (verifIDF($1)==1) printf ("Erreur semantique ( Constante ne peut pas changer de valeur), ligne %d, colonne %d : %s\n",nb,col,$1);
+                                          if (doubleDeclaration($1)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$1);
                                           //else {b=1; printf("idff= %s\n",$1);
                                           //strcpy(cstype,(char*)TypeEntite($1));
-                                          for(n=0;n<j;n++) {
+                                         /* for(n=0;n<j;n++) {
                                             
                                             if(strcmp((char*)TypeEntite($1),(char*)TypeEntite(types[n]))!=0) {
                                              printf ("Erreur semantique ( Incompatibilite ), ligne %d, colonne %d dans l'entite : %s\n",nb,col,types[n]);
@@ -130,7 +130,7 @@ AFFECTATION : idff aff EXPRESSION point { if (verifIDF($1)==1) printf ("Erreur s
 
                                           }
                                           j=0; 
-                                          } }
+                                          }*/ }
 ;
 
 EXPRESSION : C OPER EXPRESSION 
@@ -144,31 +144,31 @@ OPER : add {$$=$1;}
       | divi{$$=$1; a=1;}
 ;
 
-C : idff {if (doubleDeclaration($1)==0) printf ("Erreur semantique: variable %s non declaree\n",$1);
+C : idff {if (doubleDeclaration($1)==0) printf ("Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s \n",nb,col,$1);
          // else{if((a==1) && (recheche_val($1)==0)) {printf("erreur div par 0, ligne %d, colonne %d \n",nb,col); a=0;}
 
           if((b==1) && strcmp((char*)TypeEntite($1),cstype)!=0)  {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col); b=0; strcpy(cstype,"");}
           
-          strcpy(types[j],$1);
-              j++;
+        //  strcpy(types[j],$1);
+          //    j++;
         }
-  | CSTE {strcpy(types[j],$1);
-              j++;}
+  | CSTE //{strcpy(types[j],$1);
+           //   j++;}
 ;
 
 CSTE : csti { printf("csti=%d\n",$1);
-              if(($1==0) && (a==1)) {printf("Erreur semantique ( div par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
+              if(($1==0) && (a==1)) {printf("Erreur semantique ( division par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
               
               if((b==1) && strcmp((char*)TypeEntite($1),cstype)!=0)  {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col); b=0;strcpy(cstype,"");}
               //itoa($1, buf, 10); $$=buf;
-             sprintf($$,"%d",$1); 
+            // sprintf($$,"%d",$1); 
                    }
      |  cstf { printf("cstf=%f\n",$1);
-              if(($1==0) && (a==1)) {printf("Erreur semantique ( div par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
+              if(($1==0) && (a==1)) {printf("Erreur semantique ( division par 0 ), ligne %d, colonne %d \n",nb,col); a=0;}
               
               if((b==1) && strcmp((char*)TypeEntite($1),cstype)!=0) {printf("Erreur semantique: incompatibilite de type, ligne %d, colonne %d \n",nb,col);b=0;strcpy(cstype,"");}
               //gcvt($1, 10, buf); $$=buf;
-            sprintf($$,"%d",$1);   
+            //sprintf($$,"%d",$1);   
               }
 
     
