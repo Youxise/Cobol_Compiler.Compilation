@@ -1,0 +1,63 @@
+
+MAIN ERRORS :
+**Division sur 0
+****Variable doublement déclarée
+****Variable déclarée ou pas
+*Incompatibilité
+****Declaration de la taille de tableau negative / 0
+**incompatibilite du signe avec l'idf
+
+CUTE ERRORS :
+*update les variables apres les affectations
+****rendre la colonne : valeur dans la TS en STRING ( retirer l'initialisation des idf a 0 )
+
+
+
+
+
+
+
+- si type existant alors
+			fonction qui retourne le type en x
+
+
+
+
+
+
+
+
+
+X : B OPER2 B Y |parenthese_ouv X parenthese_fer Y | B OPER X;
+Y: OPER X |OPER2 B|  ; 
+B: CST | idf ;
+OPR: mc_add | mc_sub | mc_mul | mc_div;
+
+idf + idf - ( ( idf * ( idf/idf ) ) 
+
+
+x - 
+
+EXPA : VAR OPA VAR EXP | VAR OPA EXPA | VAR | EXPAP;
+EXP  : OPA VAR | OPA EXPAP | OPA EXPA;
+EXPAP : parG EXPA parD | parG EXPA parD OPA EXPA;
+
+
+
+CONDITION : X EQ X | X | mc_non X
+;
+
+X : C OPER C EXPRESSION | parG X parD EXPRESSION | C OPER2 X
+;
+
+EXPRESSION : OPER2 X | OPER C |  
+; 
+
+C : idff | CST
+;
+
+OPER : divi | OPER2
+;
+
+OPER2 : add | sous | mult
+;
