@@ -5,7 +5,7 @@ WORKING-STORAGE SECTION.
 Tableau LINE 4, SIZE 55 FLOAT. #mi
 @w!
 CONST Thameur CHAR.
-CONST Abi=0.
+CONST Abi=(-4).
 CONST Hadjer="13".
 Eren | Mikasa | Armin STRING.
 Reiner INTEGER.
@@ -15,7 +15,6 @@ Reiner=Hadjer+Armin/Reiner.
 MOVE Thameur TO 31
 IF ((Reiner*Eren.G.55+Pieck/0)):
 MOVE Armin TO Eren
-Abi = 422.
 DISPLAY (“&”:Abi).
 END
 END

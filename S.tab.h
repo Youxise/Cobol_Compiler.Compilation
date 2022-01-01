@@ -85,18 +85,17 @@
      parG = 301,
      parD = 302,
      sepv = 303,
-     comm = 304,
-     virg = 305,
-     deup = 306,
-     gui1 = 307,
-     gui2 = 308,
-     doll = 309,
-     apos = 310,
-     ecom = 311,
-     arob = 312,
-     pcen = 313,
-     hash = 314,
-     disp = 315
+     virg = 304,
+     deup = 305,
+     gui1 = 306,
+     gui2 = 307,
+     doll = 308,
+     apos = 309,
+     ecom = 310,
+     arob = 311,
+     pcen = 312,
+     hash = 313,
+     disp = 314
    };
 #endif
 
@@ -116,7 +115,7 @@ char* str;
 
 
 /* Line 1676 of yacc.c  */
-#line 120 "S.tab.h"
+#line 119 "S.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

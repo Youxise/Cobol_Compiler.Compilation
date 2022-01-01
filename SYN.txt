@@ -13,9 +13,9 @@ CUTE ERRORS :
 
 
 
-- atoi/atof ne prend pas en compte les nombres negatifs
-- Division sur 0 ( a refaire, idf=0 )
-- Incompatibilite ( bug la TS, exp arithmetiques, signe de display )
+- ****atoi/atof ne prend pas en compte les nombres negatifs
+- ****Division sur 0 ( a refaire, idf=0 )
+- ***Incompatibilite ( bug la TS, exp arithmetiques, signe de display )
 - Affectation dans la TS
  Condition If : executer le premier bloc sinon saut au 2eme bloc
  Boucle : refaire le meme bloc

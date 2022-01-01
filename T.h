@@ -129,24 +129,33 @@ int Recherche_position(char entite[])
 		
 }
 
-/*char* recheche_val(char entite[])
+char* recherche_val(char entite[])
 {
  int x=Recherche_position(entite);
- if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
+ if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return "";}
 
  return tab1[x].val;
 
 }
 
-char* modifier_val(char entite[],)
+float recheche_val(char entite[])
 {
  int x=Recherche_position(entite);
  if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
 
- return tab1[x].val;
+ return atof(tab1[x].val);
 
 }
-*/
+
+void modifier_val(char entite[],char val[])
+{
+ int x=Recherche_position(entite);
+ if(x==-1) printf("Entite n'existe pas dans la TS\n");
+
+ else strcpy(tab1[x].val,val);
+
+}
+
 
 
 int verifIDF(char entite[])
