@@ -2,22 +2,29 @@ IDENTIFICATION DIVISION.
 PROGRAM-ID. Pogg.
 DATA DIVISION.
 WORKING-STORAGE SECTION.
-Tableau LINE 4, SIZE 55 FLOAT. #mi
+Tableau LINE 4, SIZE 55 FLOAT. #comment!!
+#mi!
+
+
+
 @w!
 CONST Thameur CHAR.
-CONST Abi=(-4).
+CONST Abi=0. 
 CONST Hadjer="13".
 Eren | Mikasa | Armin STRING.
 Reiner INTEGER.
 PROCEDURE DIVISION.
+Thameur=98.
 Reiner=0.
-Reiner=Hadjer+Armin/Reiner.
+Reiner=Hadjer+Armin/0.
 MOVE Thameur TO 31
-IF ((Reiner*Eren.G.55+Pieck/0)):
+IF ((Reiner*Eren.G.55+Pieck/Reiner)):
 MOVE Armin TO Eren
+Abi = 422.
+DISPLAY (”variable Abi= & $ #“:Abi,Reiner,Thameur).
 END
-DISPLAY (”%hello“:Abi).
 END
-ACCEPT (“$”:@Abi).
+ACCEPT (“%”:@Abi).
 END
+DISPLAY (”%variable Abi“).
 STOP RUN

@@ -61,8 +61,8 @@
      mc_str = 277,
      mc_line = 278,
      mc_size = 279,
-     mc_type = 280,
-     mc_acc = 281,
+     mc_acc = 280,
+     mc_type = 281,
      mc_disp = 282,
      mc_if = 283,
      mc_else = 284,
@@ -106,7 +106,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 13 "S.y"
+#line 14 "S.y"
 
 int entier;
 float reel;

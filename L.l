@@ -4,10 +4,9 @@
 #include<string.h>
 #include"S.tab.h"
 #include"T.h"
-extern nb;
+int yylineo=1;
 extern col;
 extern YYSTYPE yylval;
-//#Mikasa = Eren/Reiner+76!
 %}
 chiffre [0-9]
 chiffrenonNUL [1-9]
@@ -21,6 +20,7 @@ cstchar \'.\'
 cststr \"(.|\n)*\"
 dispstr \”(.+)\“
 %%
+{com}
 "IDENTIFICATION DIVISION." 	 { 	  
 									rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_ident; }
@@ -103,6 +103,7 @@ ACCEPT						 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_acc; }
 
 DISPLAY						 { 		rechercher(yytext,"Mot cle","","",1);
+
 									col=col+strlen(yytext); return mc_disp; }
 
 IF							 { 		rechercher(yytext,"Mot cle","","",1);
@@ -187,8 +188,10 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 ","							 { 		rechercher(yytext,"Virgule","","",2);
 									col=col+strlen(yytext); return virg; }
 
-{com}
-{dispstr}					{	yylval.str=strdup(yytext);
+{dispstr}					{	
+								col=col+strlen(yytext);
+								yylval.str=strdup(yytext);
+
 								return disp;}	
 
 {cstint} 					 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
@@ -196,7 +199,7 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
-									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",nb,col,yytext);	col=col+strlen(yytext); }
+									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
 {cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
@@ -220,9 +223,9 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }
-							  else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",nb,col,yytext);	col=col+strlen(yytext); }	 }
+							  else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
 
 [ \t] col=col+strlen(yytext);
-\n { nb++; col=1; }
-. printf(" Erreur lexicale, ligne : %d, colonne : %d : %s \n",nb,col,yytext);
+\n { yylineo++; col=1; }
+. printf(" Erreur lexicale, ligne : %d, colonne : %d : %s \n",yylineo,col,yytext);
 %%

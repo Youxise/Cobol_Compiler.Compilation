@@ -213,29 +213,23 @@ Signes[0]='#';
 
 
 */
-/*
-int nbSIGNE (char chaine[],char TYPE[])
+
+int  nbSIGNE (char chaine[], char (*types)[9])
 {
-  int nb=0,i=0;
-  char c[256];
-  for (i ; i<strlen(chaine) ; i++ ) {
-    strcpy(c,chaine);
-    if ((strcmp(c,"#")==0)||(strcmp(c,"%")==0)||(strcmp(c,"$")==0)||(strcmp(c,"&")==0)) {
-    nb++;
-    if (strcmp(c,"%")==0) strcpy(TYPE,"CHAR.");
-    if (strcmp(c,"#")==0) strcpy(TYPE,"FLOAT.");
-    if (strcmp(c,"&")==0) strcpy(TYPE,"INTEGER.");
-    if (strcmp(c,"$")==0) strcpy(TYPE,"STRING.");
-    if (nb>1) return -1;
+  int nb=0,i;
+
+  for (i=0 ; i<strlen(chaine); i++ ) {
+    if (chaine[i]=='%') {strcpy(types[nb],"CHAR."); nb++;}
+    if (chaine[i]=='#') {strcpy(types[nb],"FLOAT."); nb++;}
+    if (chaine[i]=='&') {strcpy(types[nb],"INTEGER."); nb++;}
+    if (chaine[i]=='$') {strcpy(types[nb],"STRING."); nb++;}
+    
     }
-  }
-
-  if (nb==1) return 1;
-    else return -1;
-
+  
+  return nb;
 }
 
-*/
+
 
 char * TypeEntite(char entite[])
 	{
@@ -273,7 +267,7 @@ char * TypeEntite(char entite[])
 void afficher()
 {int i;
 
-printf("\t/***************Table des symboles IDF*************/\n");
+printf("\n\n\t\t\t/*************** Table des symboles des IDF & CST *************/\n\n");
 printf("_________________________________________________________________________________________\n");
 printf("\t|           Nom_Entite         |   Code_Entite    | Type_Entite | Val_Entite\n");
 printf("__________________________________________________________________________________________\n");
@@ -289,7 +283,7 @@ for(i=0;i<1000;i++)
 }
 
  
-printf("\n\t/***************Table des symboles mots cle*************/\n");
+printf("\n\n\t\t\t/*************** Table des symboles des  mots cle *************/\n\n");
 
 printf("_______________________________________________________\n");
 printf("\t| \t \t NomEntite | \t CodeEntite\n");
@@ -302,7 +296,7 @@ for(i=0;i<40;i++)
                
       }
 
-printf("\n\t/***************Table des symboles separateurs*************/\n");
+printf("\n\n\t\t\t/*************** Table des symboles des separateurs *************/\n\n");
 
 printf("__________________________________________________________\n");
 printf("\t|         NomEntite         |      CodeEntite      \t \n");
