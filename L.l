@@ -19,7 +19,7 @@ cstint 0|{chiffrenonNUL}{chiffre}*|"("[-+]{chiffrenonNUL}{chiffre}*")"
 cstfloat 0|(0|{chiffrenonNUL}{chiffre}*)"."{chiffre}+|"("[-+](0|{chiffrenonNUL}{chiffre}*)"."{chiffre}+")"
 cstchar \'.\'
 cststr \"(.|\n)*\"
-dispstr \“[^\#$%&]+[#$%&]\”
+dispstr \”(.+)\“
 %%
 "IDENTIFICATION DIVISION." 	 { 	  
 									rechercher(yytext,"Mot cle","","",1);
@@ -199,10 +199,12 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",nb,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
-{cstfloat} 					 { 		rechercher(yytext,"Cst","FLOAT.",yytext,0);
+{cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
+									rechercher(yytext,"Cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
+																			}
 
 {cstchar} 					 { 		rechercher(yytext,"Cst","CHAR.","",0);
 									col=col+strlen(yytext);

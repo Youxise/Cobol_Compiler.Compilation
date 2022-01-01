@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include<string.h>
 typedef struct
 {
    int state;
@@ -183,7 +183,10 @@ void insererCODE(char entite[])
                      }
 }
 
-/*int nbSIGNE (char chaine[],char TYPE[])
+
+
+/*
+int nbSIGNE (char chaine[],char TYPE[])
 {
   int nb=0,i=0;
   char Signes[]="#%&$";
@@ -207,20 +210,22 @@ Signes[0]='#';
     else return -1;
 
 }
+
+
 */
-
-
-
+/*
 int nbSIGNE (char chaine[],char TYPE[])
 {
   int nb=0,i=0;
+  char c[256];
   for (i ; i<strlen(chaine) ; i++ ) {
-    if ((strcmp((char)chaine[i],"#")==0)||(strcmp(chaine[i],"%")==0)||(strcmp(chaine[i],"$")==0)||(strcmp(chaine[i],"&")==0)) {
+    strcpy(c,chaine);
+    if ((strcmp(c,"#")==0)||(strcmp(c,"%")==0)||(strcmp(c,"$")==0)||(strcmp(c,"&")==0)) {
     nb++;
-    if (strcmp(chaine[i],"%")==0) strcpy(TYPE,"CHAR.");
-    if (strcmp(chaine[i],"#")==0) strcpy(TYPE,"FLOAT.");
-    if (strcmp(chaine[i],"&")==0) strcpy(TYPE,"INTEGER.");
-    if (strcmp(chaine[i],"$")==0) strcpy(TYPE,"STRING.");
+    if (strcmp(c,"%")==0) strcpy(TYPE,"CHAR.");
+    if (strcmp(c,"#")==0) strcpy(TYPE,"FLOAT.");
+    if (strcmp(c,"&")==0) strcpy(TYPE,"INTEGER.");
+    if (strcmp(c,"$")==0) strcpy(TYPE,"STRING.");
     if (nb>1) return -1;
     }
   }
@@ -230,7 +235,7 @@ int nbSIGNE (char chaine[],char TYPE[])
 
 }
 
-
+*/
 
 char * TypeEntite(char entite[])
 	{

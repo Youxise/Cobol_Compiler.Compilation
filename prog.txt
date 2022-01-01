@@ -15,8 +15,8 @@ Reiner=Hadjer+Armin/Reiner.
 MOVE Thameur TO 31
 IF ((Reiner*Eren.G.55+Pieck/0)):
 MOVE Armin TO Eren
-DISPLAY (“&”:Abi).
 END
+DISPLAY (”%hello“:Abi).
 END
 ACCEPT (“$”:@Abi).
 END
