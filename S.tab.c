@@ -78,13 +78,12 @@ char types[20][9];
 char buf[25];
 char cstype[10];
 char sigtype[10];
-char atype[10];
 char *type;
 int a=0;
 
 
 /* Line 189 of yacc.c  */
-#line 88 "S.tab.c"
+#line 87 "S.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -174,7 +173,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 15 "S.y"
+#line 14 "S.y"
 
 int entier;
 float reel;
@@ -183,7 +182,7 @@ char* str;
 
 
 /* Line 214 of yacc.c  */
-#line 187 "S.tab.c"
+#line 186 "S.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -195,7 +194,7 @@ char* str;
 
 
 /* Line 264 of yacc.c  */
-#line 199 "S.tab.c"
+#line 198 "S.tab.c"
 
 #ifdef short
 # undef short
@@ -512,14 +511,14 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    32,    32,    36,    37,    39,    44,    45,    52,    54,
-      60,    63,    68,    76,    77,    78,    79,    82,    84,    86,
-      88,    92,    95,   101,   102,   105,   105,   105,   105,   105,
-     108,   112,   131,   138,   143,   151,   152,   153,   154,   157,
-     160,   161,   164,   165,   166,   169,   200,   201,   202,   205,
-     206,   207,   208,   211,   224,   228,   238,   250,   250,   254,
-     258,   259,   263,   272,   281,   293,   294,   295,   296,   297,
-     298,   302,   303
+       0,    31,    31,    35,    36,    38,    43,    44,    51,    53,
+      59,    62,    67,    75,    76,    77,    78,    81,    83,    85,
+      87,    91,    94,   100,   101,   104,   104,   104,   104,   104,
+     107,   111,   130,   137,   142,   150,   151,   152,   153,   156,
+     159,   160,   163,   164,   165,   168,   201,   202,   203,   206,
+     207,   208,   209,   212,   225,   229,   239,   251,   251,   255,
+     259,   260,   264,   273,   282,   294,   295,   296,   297,   298,
+     299,   303,   304
 };
 #endif
 
@@ -1521,7 +1520,7 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 32 "S.y"
+#line 31 "S.y"
     {    printf ("\n\n\t\t\t\t\t --- Programme syntaxiquement correct --- \n\n");
                                                                                             printf ("\n\n\t\t --------------------------- Fin de la compilation --------------------------- \n\n");    YYACCEPT;;}
     break;
@@ -1529,7 +1528,7 @@ yyreduce:
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 39 "S.y"
+#line 38 "S.y"
     {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],(yyvsp[(2) - (2)].str));
                             else  printf ("<< Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,vars[n]);
@@ -1540,7 +1539,7 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 45 "S.y"
+#line 44 "S.y"
     {for(n=0;n<i;n++) {
                             if (doubleDeclaration(vars[n])==0) insererTYPE(vars[n],(yyvsp[(2) - (2)].str));
                             else  printf ("<< Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,vars[n]);
@@ -1551,7 +1550,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 52 "S.y"
+#line 51 "S.y"
     { strcpy(vars[i],(yyvsp[(1) - (3)].str)); 
                                       i++;;}
     break;
@@ -1559,7 +1558,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 54 "S.y"
+#line 53 "S.y"
     { strcpy(vars[i],(yyvsp[(1) - (1)].str));
                           i++; ;}
     break;
@@ -1567,7 +1566,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 63 "S.y"
+#line 62 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (2)].str))==0)          { insererTYPE((yyvsp[(1) - (2)].str),(yyvsp[(2) - (2)].str));
                                                          insererCODE((yyvsp[(1) - (2)].str));      }
                 else printf ("<< Erreur semantique ( Idf deja declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (2)].str));
@@ -1577,7 +1576,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 68 "S.y"
+#line 67 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (4)].str))==0) { insererTYPE((yyvsp[(1) - (4)].str),cstype);
                                                          insererCODE((yyvsp[(1) - (4)].str));
                                                          modifier_val((yyvsp[(1) - (4)].str),(yyvsp[(3) - (4)].str));  }
@@ -1588,35 +1587,35 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 76 "S.y"
+#line 75 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 77 "S.y"
+#line 76 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 78 "S.y"
+#line 77 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 79 "S.y"
+#line 78 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 82 "S.y"
+#line 81 "S.y"
     {strcpy(cstype,"INTEGER.");
                                         sprintf(buf,"%d",(yyvsp[(1) - (1)].entier));  (yyval.str)=buf;;}
     break;
@@ -1624,7 +1623,7 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 84 "S.y"
+#line 83 "S.y"
     {strcpy(cstype,"FLOAT.");
                                         sprintf(buf,"%f",(yyvsp[(1) - (1)].reel));  (yyval.str)=buf;;}
     break;
@@ -1632,7 +1631,7 @@ yyreduce:
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 86 "S.y"
+#line 85 "S.y"
     {strcpy(cstype,"CHAR.");
                                         (yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
@@ -1640,7 +1639,7 @@ yyreduce:
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 88 "S.y"
+#line 87 "S.y"
     {strcpy(cstype,"STRING.");
                                         (yyval.str)=(yyvsp[(1) - (1)].str);;}
     break;
@@ -1648,7 +1647,7 @@ yyreduce:
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 92 "S.y"
+#line 91 "S.y"
     { strcpy(vars[i],(yyvsp[(1) - (3)].str));
                               i++;  ;}
     break;
@@ -1656,7 +1655,7 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 95 "S.y"
+#line 94 "S.y"
     {   if (((yyvsp[(3) - (6)].entier)<0)||((yyvsp[(6) - (6)].entier)<1)) printf ("<< Erreur semantique ( Taille du tableau ou borne inferieure hors limites ), ligne %d, colonne %d : %s ou %s >>\n",yylineo,col,(yyvsp[(3) - (6)].entier),(yyvsp[(6) - (6)].entier));
                                                   strcpy(vars[i],(yyvsp[(1) - (6)].str));
                                                   i++;;}
@@ -1665,7 +1664,7 @@ yyreduce:
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 108 "S.y"
+#line 107 "S.y"
     { if (doubleDeclaration((yyvsp[(8) - (10)].str))==0)                   printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(8) - (10)].str));
                                                                   if (strcmp((char*)TypeEntite((yyvsp[(8) - (10)].str)),sigtype)!=0)   printf ("<< Erreur semantique ( Incompatibilite de types dans ACCEPT), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(8) - (10)].str));
                                                                   ;}
@@ -1674,7 +1673,7 @@ yyreduce:
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 112 "S.y"
+#line 111 "S.y"
     { 
                                                         m=nbSIGNE((yyvsp[(3) - (7)].str),types);
                                                        //printf("nb de types dans display =%d\n",n);
@@ -1699,7 +1698,7 @@ yyreduce:
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 131 "S.y"
+#line 130 "S.y"
     {
                                                         m=nbSIGNE((yyvsp[(3) - (5)].str),types);
                                                         if (m!=0) {printf("<< Erreur semantique ( Idf manquant ), ligne %d, colonne %d ",yylineo,col);}
@@ -1709,7 +1708,7 @@ yyreduce:
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 138 "S.y"
+#line 137 "S.y"
     { strcpy(vars[j],(yyvsp[(1) - (3)].str)); 
                                 if (doubleDeclaration((yyvsp[(1) - (3)].str))==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (3)].str));
                                                            
@@ -1720,7 +1719,7 @@ yyreduce:
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 143 "S.y"
+#line 142 "S.y"
     { strcpy(vars[j],(yyvsp[(1) - (1)].str)); 
                                 if (doubleDeclaration((yyvsp[(1) - (1)].str))==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (1)].str));
                                 j++;
@@ -1730,65 +1729,67 @@ yyreduce:
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 151 "S.y"
+#line 150 "S.y"
     { strcpy(sigtype,"STRING.");  ;}
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 152 "S.y"
+#line 151 "S.y"
     { strcpy(sigtype,"CHAR.");    ;}
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 153 "S.y"
+#line 152 "S.y"
     { strcpy(sigtype,"FLOAT.");   ;}
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 154 "S.y"
+#line 153 "S.y"
     { strcpy(sigtype,"INTEGER."); ;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 164 "S.y"
+#line 163 "S.y"
     { if ((doubleDeclaration((yyvsp[(2) - (6)].str))==0)||(doubleDeclaration((yyvsp[(4) - (6)].str))==0)) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s ou %s >>\n",yylineo,col,(yyvsp[(2) - (6)].str),(yyvsp[(4) - (6)].str));;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 165 "S.y"
+#line 164 "S.y"
     { if (doubleDeclaration((yyvsp[(2) - (6)].str))==0)                               printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(2) - (6)].str));;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 166 "S.y"
+#line 165 "S.y"
     { if (doubleDeclaration((yyvsp[(4) - (6)].str))==0)                               printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(4) - (6)].str));;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 169 "S.y"
+#line 168 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (4)].str))==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (4)].str));
                                                 else { if (verifIDF((yyvsp[(1) - (4)].str))==1)   printf ("<< Erreur semantique ( Constante ne peut pas changer de valeur), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (4)].str));
-                                                       else { if (j==1) {
+                                                       else { if (j==1) {       printf ("types de 0 : %s\n",types[0]);
                                                                                 if(strcmp((char*)TypeEntite((yyvsp[(1) - (4)].str)),(char*)TypeEntite(types[0]))!=0) {
                                                                                         printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,(yyvsp[(1) - (4)].str),types[0]);
                                                                                                                                                   }
-                                                                                else {  modifier_val2((yyvsp[(1) - (4)].str),types[0]);
+                                                                                else {  modifier_val2((yyvsp[(1) - (4)].str),types[0]); }
+                                                                                
                                                                                         strcpy(types[0],"");
-                                                                                      }
+                                                                                        printf("apres : %s\n",types[0]);
+                                                                                      
 
                                                                         }
 
@@ -1811,35 +1812,35 @@ yyreduce:
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 205 "S.y"
+#line 206 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);       ;}
     break;
 
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 206 "S.y"
+#line 207 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);       ;}
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 207 "S.y"
+#line 208 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str);       ;}
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 208 "S.y"
+#line 209 "S.y"
     {(yyval.str)=(yyvsp[(1) - (1)].str); a=1;  ;}
     break;
 
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 211 "S.y"
+#line 212 "S.y"
     { if (doubleDeclaration((yyvsp[(1) - (1)].str))==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,(yyvsp[(1) - (1)].str));
                 else {
                       strcpy(types[j],(yyvsp[(1) - (1)].str));
@@ -1857,7 +1858,7 @@ yyreduce:
   case 54:
 
 /* Line 1455 of yacc.c  */
-#line 224 "S.y"
+#line 225 "S.y"
     { strcpy(types[j],(yyvsp[(1) - (1)].str));
                 j++;                ;}
     break;
@@ -1865,7 +1866,7 @@ yyreduce:
   case 55:
 
 /* Line 1455 of yacc.c  */
-#line 228 "S.y"
+#line 229 "S.y"
     { 
                 if(((yyvsp[(1) - (1)].entier)==0) && (a==1)) {
                                       printf("<< Erreur semantique ( division par 0 ), ligne %d, colonne %d : %d >>\n",yylineo,col,(yyvsp[(1) - (1)].entier)); 
@@ -1880,7 +1881,7 @@ yyreduce:
   case 56:
 
 /* Line 1455 of yacc.c  */
-#line 238 "S.y"
+#line 239 "S.y"
     { 
                 if(((yyvsp[(1) - (1)].reel)==0) && (a==1)) {
                                       printf("<< Erreur semantique ( division par 0 ), ligne %d, colonne %d : %f >>\n",yylineo,col,(yyvsp[(1) - (1)].reel)); 
@@ -1895,7 +1896,7 @@ yyreduce:
   case 62:
 
 /* Line 1455 of yacc.c  */
-#line 263 "S.y"
+#line 264 "S.y"
     { for(n=1;n<j;n++) {
                                                                   if(strcmp((char*)TypeEntite(types[0]),(char*)TypeEntite(types[n]))!=0) {
                                                                             printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,types[0],types[n]);
@@ -1910,7 +1911,7 @@ yyreduce:
   case 63:
 
 /* Line 1455 of yacc.c  */
-#line 272 "S.y"
+#line 273 "S.y"
     { for(n=1;n<j;n++) {
                                                                   if(strcmp((char*)TypeEntite(types[0]),(char*)TypeEntite(types[n]))!=0) {
                                                                             printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,types[0],types[n]);
@@ -1925,7 +1926,7 @@ yyreduce:
   case 64:
 
 /* Line 1455 of yacc.c  */
-#line 281 "S.y"
+#line 282 "S.y"
     { for(n=1;n<j;n++) {
                                                                   if(strcmp((char*)TypeEntite(types[0]),(char*)TypeEntite(types[n]))!=0) {
                                                                             printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,types[0],types[n]);
@@ -1940,7 +1941,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 1944 "S.tab.c"
+#line 1945 "S.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2152,7 +2153,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 309 "S.y"
+#line 310 "S.y"
 
 main ()
 {

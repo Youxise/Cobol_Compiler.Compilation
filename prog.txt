@@ -7,13 +7,13 @@ DATA DIVISION.
 WORKING-STORAGE SECTION.
 Tableau LINE 4, SIZE 55 FLOAT. 
 CONST Thameur CHAR.
-CONST Abi=2. 
+CONST Abi=(-2). 
 CONST Hadjer="Shingeki".
 Eren | Mikasa | Armin STRING.
 Reiner INTEGER.
 PROCEDURE DIVISION.
-Thameur=(-4).
-Reiner=(+4.8).
+Thameur=4.
+Reiner=Abi.
 #1255fds kdakjfkdaf dflafkd     fdkaf   fasddsq            !
 Reiner=40+Abi/0.
 MOVE Thameur TO 31 #miasdasdlfdsfjidsfjdsi!

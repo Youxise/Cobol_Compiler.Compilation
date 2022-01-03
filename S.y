@@ -7,7 +7,6 @@ char types[20][9];
 char buf[25];
 char cstype[10];
 char sigtype[10];
-char atype[10];
 char *type;
 int a=0;
 %}
@@ -168,13 +167,15 @@ BOUCLE : mc_move idff mc_to idff LIST_INSTR mc_end { if ((doubleDeclaration($2)=
 
 AFFECTATION : idff aff EXPRESSION point       { if (doubleDeclaration($1)==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$1);
                                                 else { if (verifIDF($1)==1)   printf ("<< Erreur semantique ( Constante ne peut pas changer de valeur), ligne %d, colonne %d : %s >>\n",yylineo,col,$1);
-                                                       else { if (j==1) {
+                                                       else { if (j==1) {       printf ("types de 0 : %s\n",types[0]);
                                                                                 if(strcmp((char*)TypeEntite($1),(char*)TypeEntite(types[0]))!=0) {
                                                                                         printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,$1,types[0]);
                                                                                                                                                   }
-                                                                                else {  modifier_val2($1,types[0]);
+                                                                                else {  modifier_val2($1,types[0]); }
+                                                                                
                                                                                         strcpy(types[0],"");
-                                                                                      }
+                                                                                        printf("apres : %s\n",types[0]);
+                                                                                      
 
                                                                         }
 

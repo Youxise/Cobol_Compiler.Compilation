@@ -529,9 +529,8 @@ char *yytext;
 #include"T.h"
 int yylineo=1,i;
 extern col;
-char cst[25];
 extern YYSTYPE yylval;
-#line 535 "lex.yy.c"
+#line 534 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -682,9 +681,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 23 "L.l"
+#line 22 "L.l"
 
-#line 688 "lex.yy.c"
+#line 687 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -769,7 +768,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "L.l"
+#line 23 "L.l"
 { for( i=0;i<strlen(yytext);i++){
 				if(yytext[i] == '\n' ) { yylineo++; col=1;}
 										}
@@ -777,104 +776,104 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 28 "L.l"
+#line 27 "L.l"
 { 	  
 									rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_ident; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 32 "L.l"
+#line 31 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_prog; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 35 "L.l"
+#line 34 "L.l"
 { 	rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_data; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 38 "L.l"
+#line 37 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_work; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 41 "L.l"
+#line 40 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_proc; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 44 "L.l"
+#line 43 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_stopr; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 47 "L.l"
+#line 46 "L.l"
 { 	rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_et; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 50 "L.l"
+#line 49 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_ou; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 53 "L.l"
+#line 52 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_non; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 56 "L.l"
+#line 55 "L.l"
 { 	rechercher(yytext,"Superieur","","",2);
 									col=col+strlen(yytext);	return mc_sup; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 59 "L.l"
+#line 58 "L.l"
 { 	rechercher(yytext,"Inferieur","","",2);
 									col=col+strlen(yytext);	return mc_inf; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 62 "L.l"
+#line 61 "L.l"
 { 		rechercher(yytext,"Superieur ou Egal","","",2);
 									col=col+strlen(yytext);	return mc_supe; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 65 "L.l"
+#line 64 "L.l"
 { 		rechercher(yytext,"Inferieur ou Egal","","",2);
 									col=col+strlen(yytext);	return mc_infe; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 68 "L.l"
+#line 67 "L.l"
 { 		rechercher(yytext,"Equivalent","","",2);
 									col=col+strlen(yytext);	return mc_equi; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 71 "L.l"
+#line 70 "L.l"
 { 		rechercher(yytext,"Different","","",2);
 									col=col+strlen(yytext);	return mc_diff; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 74 "L.l"
+#line 73 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_const; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 77 "L.l"
+#line 76 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -882,7 +881,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 82 "L.l"
+#line 81 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -890,7 +889,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 87 "L.l"
+#line 86 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -898,7 +897,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 92 "L.l"
+#line 91 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -906,180 +905,180 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 97 "L.l"
+#line 96 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_line; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 100 "L.l"
+#line 99 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_size; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 103 "L.l"
+#line 102 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); 				 }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 106 "L.l"
+#line 105 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_acc; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 109 "L.l"
+#line 108 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 
 									col=col+strlen(yytext); return mc_disp; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 113 "L.l"
+#line 112 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_if; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 116 "L.l"
+#line 115 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_else; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 119 "L.l"
+#line 118 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);	
 									col=col+strlen(yytext);	return mc_move; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 122 "L.l"
+#line 121 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_to; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 125 "L.l"
+#line 124 "L.l"
 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_end; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 128 "L.l"
+#line 127 "L.l"
 { 		rechercher(yytext,"Deux points","","",2);
 									col=col+strlen(yytext);	return deup;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 131 "L.l"
+#line 130 "L.l"
 { 		rechercher(yytext,"Affectation","","",2);
 									col=col+strlen(yytext);	return aff; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 134 "L.l"
+#line 133 "L.l"
 { 	    rechercher(yytext,"Plus","","",2);
 									yylval.str=strdup(yytext); 
 							    	col=col+strlen(yytext);	return add; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 138 "L.l"
+#line 137 "L.l"
 { 	    rechercher(yytext,"Moins","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return sous; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 142 "L.l"
+#line 141 "L.l"
 {      rechercher(yytext,"Fois","","",2);
 									yylval.str=strdup(yytext); 
 								    col=col+strlen(yytext);	return mult; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 146 "L.l"
+#line 145 "L.l"
 { 	    rechercher(yytext,"Divise","","",2);
 						        	yylval.str=strdup(yytext); 
 									col=col+strlen(yytext);	return divi; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 150 "L.l"
+#line 149 "L.l"
 {      rechercher(yytext,"Point","","",2);
 									col=col+strlen(yytext); return point; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 153 "L.l"
+#line 152 "L.l"
 { 		rechercher(yytext,"Parenthese ouvrante","","",2);
 									col=col+strlen(yytext); return parG; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 156 "L.l"
+#line 155 "L.l"
 { 		rechercher(yytext,"Parenthese fermante","","",2);
 									col=col+strlen(yytext); return parD; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 159 "L.l"
+#line 158 "L.l"
 { 		rechercher(yytext,"Barre","","",2);
 									col=col+strlen(yytext); return sepv; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 162 "L.l"
+#line 161 "L.l"
 { 		rechercher(yytext,"Guillemet ouvrant","","",2);
 									col=col+strlen(yytext);  return gui1; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 165 "L.l"
+#line 164 "L.l"
 { 		rechercher(yytext,"Dollar","","",2);
 									col=col+strlen(yytext);  return doll;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 168 "L.l"
+#line 167 "L.l"
 { 		rechercher(yytext,"Pourcent","","",2);
 									col=col+strlen(yytext);  return pcen;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 171 "L.l"
+#line 170 "L.l"
 { 		rechercher(yytext,"Arobase","","",2);
 									col=col+strlen(yytext);  return arob;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 174 "L.l"
+#line 173 "L.l"
 { 		rechercher(yytext,"Ecommercial","","",2);
 									col=col+strlen(yytext);  return ecom;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 177 "L.l"
+#line 176 "L.l"
 { 		rechercher(yytext,"Hashtag","","",2);
 									col=col+strlen(yytext);  return hash;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 180 "L.l"
+#line 179 "L.l"
 { 		rechercher(yytext,"Guillemet fermant","","",2);
 									col=col+strlen(yytext);  return gui2;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 183 "L.l"
+#line 182 "L.l"
 { 		rechercher(yytext,"Virgule","","",2);
 									col=col+strlen(yytext); return virg; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 186 "L.l"
+#line 185 "L.l"
 {	
 								col=col+strlen(yytext);
 								yylval.str=strdup(yytext);
@@ -1088,33 +1087,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 192 "L.l"
+#line 191 "L.l"
 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
 															
-															strcpy(cst,yytext);	removePar(cst);
-															rechercher(yytext,"Cst","INTEGER.",cst,0);
+															removePar(yytext);
+															rechercher(yytext,"Cst","INTEGER.",yytext,0);
 															col=col+strlen(yytext);
-															yylval.entier=atoi(cst); 
+															yylval.entier=atoi(yytext);
+															printf ("yytext : %s\n",yytext);
+															
 															return csti;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 202 "L.l"
+#line 203 "L.l"
 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
 
-									strcpy(cst,yytext);	removePar(cst);
-									rechercher(yytext,"Cst","FLOAT.",cst,0);
+									removePar(yytext);
+									rechercher(yytext,"Cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
-									yylval.reel=atof(cst);
+									yylval.reel=atof(yytext);
 									return cstf;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																			}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 212 "L.l"
+#line 213 "L.l"
 { 		rechercher(yytext,"Cst","CHAR.","",0);
 									col=col+strlen(yytext);
 									yylval.str=strdup(yytext);	
@@ -1122,7 +1123,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 217 "L.l"
+#line 218 "L.l"
 { 	    rechercher(yytext,"Cst","STRING.","",0);
 							        col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -1130,7 +1131,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 222 "L.l"
+#line 223 "L.l"
 { if (yyleng<9) { 		rechercher(yytext,"IDF","","",0);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
@@ -1139,25 +1140,25 @@ YY_RULE_SETUP
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 228 "L.l"
+#line 229 "L.l"
 col=col+strlen(yytext);
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 229 "L.l"
+#line 230 "L.l"
 { yylineo++; col=1; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 230 "L.l"
+#line 231 "L.l"
 printf("<< Erreur lexicale, ligne : %d, colonne : %d : %s >>\n",yylineo,col,yytext);
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 231 "L.l"
+#line 232 "L.l"
 ECHO;
 	YY_BREAK
-#line 1161 "lex.yy.c"
+#line 1162 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2043,5 +2044,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 231 "L.l"
+#line 232 "L.l"
 

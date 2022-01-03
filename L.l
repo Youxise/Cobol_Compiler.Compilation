@@ -6,7 +6,6 @@
 #include"T.h"
 int yylineo=1,i;
 extern col;
-char cst[25];
 extern YYSTYPE yylval;
 %}
 chiffre [0-9]
@@ -191,20 +190,22 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 
 {cstint} 					 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
 															
-															strcpy(cst,yytext);	removePar(cst);
-															rechercher(yytext,"Cst","INTEGER.",cst,0);
+															removePar(yytext);
+															rechercher(yytext,"Cst","INTEGER.",yytext,0);
 															col=col+strlen(yytext);
-															yylval.entier=atoi(cst); 
+															yylval.entier=atoi(yytext);
+															printf ("yytext : %s\n",yytext);
+															
 															return csti;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
 {cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
 
-									strcpy(cst,yytext);	removePar(cst);
-									rechercher(yytext,"Cst","FLOAT.",cst,0);
+									removePar(yytext);
+									rechercher(yytext,"Cst","FLOAT.",yytext,0);
 									col=col+strlen(yytext);
-									yylval.reel=atof(cst);
+									yylval.reel=atof(yytext);
 									return cstf;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																			}
