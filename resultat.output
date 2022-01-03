@@ -1,0 +1,1581 @@
+Terminals unused in grammar
+
+   mc_type
+   pvg
+   egal
+   apos
+
+
+État 88conflits: 1 décalage/réduction
+
+
+Grammaire
+
+    0 $accept: S $end
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    2 LIST_DEC: DEC LIST_DEC
+    3         | /* vide */
+
+    4 DEC: DEC_VAR TYPE2
+    5    | DEC_CST
+    6    | DEC_TAB TYPE2
+
+    7 DEC_VAR: idff sepv DEC_VAR
+    8        | idff
+
+    9 DEC_CST: mc_const A
+
+   10 A: idff TYPE2
+   11  | idff aff CST point
+
+   12 TYPE2: mc_int
+   13      | mc_float
+   14      | mc_char
+   15      | mc_str
+
+   16 CST: csti
+   17    | cstf
+   18    | cstch
+   19    | cstst
+
+   20 DEC_TAB: idff sepv DEC_TAB
+   21        | idff mc_line csti virg mc_size csti
+
+   22 LIST_INSTR: INSTR LIST_INSTR
+   23           | /* vide */
+
+   24 INSTR: AFFECTATION
+   25      | IF_STAT
+   26      | BOUCLE
+   27      | LECTURE
+   28      | ECRITURE
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup arob idff parD point
+
+   30 ECRITURE: mc_disp parG disp deup LIST_IDF parD point
+   31         | mc_disp parG disp parD point
+
+   32 LIST_IDF: idff virg LIST_IDF
+   33         | idff
+
+   34 SIGNE: ecom
+   35      | hash
+   36      | pcen
+   37      | doll
+
+   38 IF_STAT: mc_if parG CONDITIONS parD deup LIST_INSTR B
+
+   39 B: mc_end
+   40  | mc_else deup LIST_INSTR mc_end
+
+   41 BOUCLE: mc_move idff mc_to idff LIST_INSTR mc_end
+   42       | mc_move idff mc_to csti LIST_INSTR mc_end
+   43       | mc_move csti mc_to idff LIST_INSTR mc_end
+
+   44 AFFECTATION: idff aff EXPRESSION point
+
+   45 EXPRESSION: C OPER EXPRESSION
+   46           | C
+   47           | parG EXPRESSION parD
+   48           | parG EXPRESSION parD OPER EXPRESSION
+
+   49 OPER: add
+   50     | sous
+   51     | mult
+   52     | divi
+
+   53 C: idff
+   54  | CSTE
+
+   55 CSTE: csti
+   56     | cstf
+
+   57 CONDITIONS: CONDITION_SIMPLE
+   58           | CONDITION_COMPLEXE
+
+   59 CONDITION_SIMPLE: CONDITION
+
+   60 CONDITION_COMPLEXE: parG CONDITION parD BETA CONDITION_COMPLEXE
+   61                   | parG CONDITION parD
+
+   62 CONDITION: EXPRESSION EQ EXPRESSION
+   63          | EXPRESSION
+   64          | mc_non parG EXPRESSION parD
+
+   65 EQ: mc_sup
+   66   | mc_inf
+   67   | mc_supe
+   68   | mc_infe
+   69   | mc_equi
+   70   | mc_diff
+
+   71 BETA: mc_ou
+   72     | mc_et
+
+
+Terminaux, suivis des règles où ils apparaissent
+
+$end (0) 0
+error (256)
+mc_ident (258) 1
+mc_data (259) 1
+mc_prog (260) 1
+mc_work (261) 1
+mc_proc (262) 1
+mc_stopr (263) 1
+mc_et (264) 72
+mc_ou (265) 71
+mc_non (266) 64
+mc_sup (267) 65
+mc_inf (268) 66
+mc_supe (269) 67
+mc_infe (270) 68
+mc_equi (271) 69
+mc_diff (272) 70
+mc_const (273) 9
+mc_int (274) 12
+mc_float (275) 13
+mc_char (276) 14
+mc_str (277) 15
+mc_line (278) 21
+mc_size (279) 21
+mc_acc (280) 29
+mc_type (281)
+mc_disp (282) 30 31
+mc_if (283) 38
+mc_else (284) 40
+mc_move (285) 41 42 43
+mc_to (286) 41 42 43
+mc_end (287) 39 40 41 42 43
+csti (288) 16 21 42 43 55
+cstf (289) 17 56
+cstch (290) 18
+cstst (291) 19
+pvg (292)
+egal (293)
+aff (294) 11 44
+add (295) 49
+sous (296) 50
+mult (297) 51
+divi (298) 52
+idff (299) 1 7 8 10 11 20 21 29 32 33 41 42 43 44 53
+point (300) 1 11 29 30 31 44
+parG (301) 29 30 31 38 47 48 60 61 64
+parD (302) 29 30 31 38 47 48 60 61 64
+sepv (303) 7 20
+virg (304) 21 32
+deup (305) 29 30 38 40
+gui1 (306) 29
+gui2 (307) 29
+doll (308) 37
+apos (309)
+ecom (310) 34
+arob (311) 29
+pcen (312) 36
+hash (313) 35
+disp (314) 30 31
+
+
+Non-terminaux, suivis des règles où ils apparaissent
+
+$accept (60)
+    à gauche: 0
+S (61)
+    à gauche: 1, à droite: 0
+LIST_DEC (62)
+    à gauche: 2 3, à droite: 1 2
+DEC (63)
+    à gauche: 4 5 6, à droite: 2
+DEC_VAR (64)
+    à gauche: 7 8, à droite: 4 7
+DEC_CST (65)
+    à gauche: 9, à droite: 5
+A (66)
+    à gauche: 10 11, à droite: 9
+TYPE2 (67)
+    à gauche: 12 13 14 15, à droite: 4 6 10
+CST (68)
+    à gauche: 16 17 18 19, à droite: 11
+DEC_TAB (69)
+    à gauche: 20 21, à droite: 6 20
+LIST_INSTR (70)
+    à gauche: 22 23, à droite: 1 22 38 40 41 42 43
+INSTR (71)
+    à gauche: 24 25 26 27 28, à droite: 22
+LECTURE (72)
+    à gauche: 29, à droite: 27
+ECRITURE (73)
+    à gauche: 30 31, à droite: 28
+LIST_IDF (74)
+    à gauche: 32 33, à droite: 30 32
+SIGNE (75)
+    à gauche: 34 35 36 37, à droite: 29
+IF_STAT (76)
+    à gauche: 38, à droite: 25
+B (77)
+    à gauche: 39 40, à droite: 38
+BOUCLE (78)
+    à gauche: 41 42 43, à droite: 26
+AFFECTATION (79)
+    à gauche: 44, à droite: 24
+EXPRESSION (80)
+    à gauche: 45 46 47 48, à droite: 44 45 47 48 62 63 64
+OPER (81)
+    à gauche: 49 50 51 52, à droite: 45 48
+C (82)
+    à gauche: 53 54, à droite: 45 46
+CSTE (83)
+    à gauche: 55 56, à droite: 54
+CONDITIONS (84)
+    à gauche: 57 58, à droite: 38
+CONDITION_SIMPLE (85)
+    à gauche: 59, à droite: 57
+CONDITION_COMPLEXE (86)
+    à gauche: 60 61, à droite: 58 60
+CONDITION (87)
+    à gauche: 62 63 64, à droite: 59 60 61
+EQ (88)
+    à gauche: 65 66 67 68 69 70, à droite: 62
+BETA (89)
+    à gauche: 71 72, à droite: 60
+
+
+état 0
+
+    0 $accept: . S $end
+
+    mc_ident  décalage et aller à l'état 1
+
+    S  aller à l'état 2
+
+
+état 1
+
+    1 S: mc_ident . mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    mc_prog  décalage et aller à l'état 3
+
+
+état 2
+
+    0 $accept: S . $end
+
+    $end  décalage et aller à l'état 4
+
+
+état 3
+
+    1 S: mc_ident mc_prog . idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    idff  décalage et aller à l'état 5
+
+
+état 4
+
+    0 $accept: S $end .
+
+    $défaut  accepter
+
+
+état 5
+
+    1 S: mc_ident mc_prog idff . point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    point  décalage et aller à l'état 6
+
+
+état 6
+
+    1 S: mc_ident mc_prog idff point . mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    mc_data  décalage et aller à l'état 7
+
+
+état 7
+
+    1 S: mc_ident mc_prog idff point mc_data . mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    mc_work  décalage et aller à l'état 8
+
+
+état 8
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work . LIST_DEC mc_proc LIST_INSTR mc_stopr
+
+    mc_const  décalage et aller à l'état 9
+    idff      décalage et aller à l'état 10
+
+    $défaut  réduction par utilisation de la règle 3 (LIST_DEC)
+
+    LIST_DEC  aller à l'état 11
+    DEC       aller à l'état 12
+    DEC_VAR   aller à l'état 13
+    DEC_CST   aller à l'état 14
+    DEC_TAB   aller à l'état 15
+
+
+état 9
+
+    9 DEC_CST: mc_const . A
+
+    idff  décalage et aller à l'état 16
+
+    A  aller à l'état 17
+
+
+état 10
+
+    7 DEC_VAR: idff . sepv DEC_VAR
+    8        | idff .
+   20 DEC_TAB: idff . sepv DEC_TAB
+   21        | idff . mc_line csti virg mc_size csti
+
+    mc_line  décalage et aller à l'état 18
+    sepv     décalage et aller à l'état 19
+
+    $défaut  réduction par utilisation de la règle 8 (DEC_VAR)
+
+
+état 11
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work LIST_DEC . mc_proc LIST_INSTR mc_stopr
+
+    mc_proc  décalage et aller à l'état 20
+
+
+état 12
+
+    2 LIST_DEC: DEC . LIST_DEC
+
+    mc_const  décalage et aller à l'état 9
+    idff      décalage et aller à l'état 10
+
+    $défaut  réduction par utilisation de la règle 3 (LIST_DEC)
+
+    LIST_DEC  aller à l'état 21
+    DEC       aller à l'état 12
+    DEC_VAR   aller à l'état 13
+    DEC_CST   aller à l'état 14
+    DEC_TAB   aller à l'état 15
+
+
+état 13
+
+    4 DEC: DEC_VAR . TYPE2
+
+    mc_int    décalage et aller à l'état 22
+    mc_float  décalage et aller à l'état 23
+    mc_char   décalage et aller à l'état 24
+    mc_str    décalage et aller à l'état 25
+
+    TYPE2  aller à l'état 26
+
+
+état 14
+
+    5 DEC: DEC_CST .
+
+    $défaut  réduction par utilisation de la règle 5 (DEC)
+
+
+état 15
+
+    6 DEC: DEC_TAB . TYPE2
+
+    mc_int    décalage et aller à l'état 22
+    mc_float  décalage et aller à l'état 23
+    mc_char   décalage et aller à l'état 24
+    mc_str    décalage et aller à l'état 25
+
+    TYPE2  aller à l'état 27
+
+
+état 16
+
+   10 A: idff . TYPE2
+   11  | idff . aff CST point
+
+    mc_int    décalage et aller à l'état 22
+    mc_float  décalage et aller à l'état 23
+    mc_char   décalage et aller à l'état 24
+    mc_str    décalage et aller à l'état 25
+    aff       décalage et aller à l'état 28
+
+    TYPE2  aller à l'état 29
+
+
+état 17
+
+    9 DEC_CST: mc_const A .
+
+    $défaut  réduction par utilisation de la règle 9 (DEC_CST)
+
+
+état 18
+
+   21 DEC_TAB: idff mc_line . csti virg mc_size csti
+
+    csti  décalage et aller à l'état 30
+
+
+état 19
+
+    7 DEC_VAR: idff sepv . DEC_VAR
+   20 DEC_TAB: idff sepv . DEC_TAB
+
+    idff  décalage et aller à l'état 10
+
+    DEC_VAR  aller à l'état 31
+    DEC_TAB  aller à l'état 32
+
+
+état 20
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc . LIST_INSTR mc_stopr
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 38
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 21
+
+    2 LIST_DEC: DEC LIST_DEC .
+
+    $défaut  réduction par utilisation de la règle 2 (LIST_DEC)
+
+
+état 22
+
+   12 TYPE2: mc_int .
+
+    $défaut  réduction par utilisation de la règle 12 (TYPE2)
+
+
+état 23
+
+   13 TYPE2: mc_float .
+
+    $défaut  réduction par utilisation de la règle 13 (TYPE2)
+
+
+état 24
+
+   14 TYPE2: mc_char .
+
+    $défaut  réduction par utilisation de la règle 14 (TYPE2)
+
+
+état 25
+
+   15 TYPE2: mc_str .
+
+    $défaut  réduction par utilisation de la règle 15 (TYPE2)
+
+
+état 26
+
+    4 DEC: DEC_VAR TYPE2 .
+
+    $défaut  réduction par utilisation de la règle 4 (DEC)
+
+
+état 27
+
+    6 DEC: DEC_TAB TYPE2 .
+
+    $défaut  réduction par utilisation de la règle 6 (DEC)
+
+
+état 28
+
+   11 A: idff aff . CST point
+
+    csti   décalage et aller à l'état 45
+    cstf   décalage et aller à l'état 46
+    cstch  décalage et aller à l'état 47
+    cstst  décalage et aller à l'état 48
+
+    CST  aller à l'état 49
+
+
+état 29
+
+   10 A: idff TYPE2 .
+
+    $défaut  réduction par utilisation de la règle 10 (A)
+
+
+état 30
+
+   21 DEC_TAB: idff mc_line csti . virg mc_size csti
+
+    virg  décalage et aller à l'état 50
+
+
+état 31
+
+    7 DEC_VAR: idff sepv DEC_VAR .
+
+    $défaut  réduction par utilisation de la règle 7 (DEC_VAR)
+
+
+état 32
+
+   20 DEC_TAB: idff sepv DEC_TAB .
+
+    $défaut  réduction par utilisation de la règle 20 (DEC_TAB)
+
+
+état 33
+
+   29 LECTURE: mc_acc . parG gui1 SIGNE gui2 deup arob idff parD point
+
+    parG  décalage et aller à l'état 51
+
+
+état 34
+
+   30 ECRITURE: mc_disp . parG disp deup LIST_IDF parD point
+   31         | mc_disp . parG disp parD point
+
+    parG  décalage et aller à l'état 52
+
+
+état 35
+
+   38 IF_STAT: mc_if . parG CONDITIONS parD deup LIST_INSTR B
+
+    parG  décalage et aller à l'état 53
+
+
+état 36
+
+   41 BOUCLE: mc_move . idff mc_to idff LIST_INSTR mc_end
+   42       | mc_move . idff mc_to csti LIST_INSTR mc_end
+   43       | mc_move . csti mc_to idff LIST_INSTR mc_end
+
+    csti  décalage et aller à l'état 54
+    idff  décalage et aller à l'état 55
+
+
+état 37
+
+   44 AFFECTATION: idff . aff EXPRESSION point
+
+    aff  décalage et aller à l'état 56
+
+
+état 38
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR . mc_stopr
+
+    mc_stopr  décalage et aller à l'état 57
+
+
+état 39
+
+   22 LIST_INSTR: INSTR . LIST_INSTR
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 58
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 40
+
+   27 INSTR: LECTURE .
+
+    $défaut  réduction par utilisation de la règle 27 (INSTR)
+
+
+état 41
+
+   28 INSTR: ECRITURE .
+
+    $défaut  réduction par utilisation de la règle 28 (INSTR)
+
+
+état 42
+
+   25 INSTR: IF_STAT .
+
+    $défaut  réduction par utilisation de la règle 25 (INSTR)
+
+
+état 43
+
+   26 INSTR: BOUCLE .
+
+    $défaut  réduction par utilisation de la règle 26 (INSTR)
+
+
+état 44
+
+   24 INSTR: AFFECTATION .
+
+    $défaut  réduction par utilisation de la règle 24 (INSTR)
+
+
+état 45
+
+   16 CST: csti .
+
+    $défaut  réduction par utilisation de la règle 16 (CST)
+
+
+état 46
+
+   17 CST: cstf .
+
+    $défaut  réduction par utilisation de la règle 17 (CST)
+
+
+état 47
+
+   18 CST: cstch .
+
+    $défaut  réduction par utilisation de la règle 18 (CST)
+
+
+état 48
+
+   19 CST: cstst .
+
+    $défaut  réduction par utilisation de la règle 19 (CST)
+
+
+état 49
+
+   11 A: idff aff CST . point
+
+    point  décalage et aller à l'état 59
+
+
+état 50
+
+   21 DEC_TAB: idff mc_line csti virg . mc_size csti
+
+    mc_size  décalage et aller à l'état 60
+
+
+état 51
+
+   29 LECTURE: mc_acc parG . gui1 SIGNE gui2 deup arob idff parD point
+
+    gui1  décalage et aller à l'état 61
+
+
+état 52
+
+   30 ECRITURE: mc_disp parG . disp deup LIST_IDF parD point
+   31         | mc_disp parG . disp parD point
+
+    disp  décalage et aller à l'état 62
+
+
+état 53
+
+   38 IF_STAT: mc_if parG . CONDITIONS parD deup LIST_INSTR B
+
+    mc_non  décalage et aller à l'état 63
+    csti    décalage et aller à l'état 64
+    cstf    décalage et aller à l'état 65
+    idff    décalage et aller à l'état 66
+    parG    décalage et aller à l'état 67
+
+    EXPRESSION          aller à l'état 68
+    C                   aller à l'état 69
+    CSTE                aller à l'état 70
+    CONDITIONS          aller à l'état 71
+    CONDITION_SIMPLE    aller à l'état 72
+    CONDITION_COMPLEXE  aller à l'état 73
+    CONDITION           aller à l'état 74
+
+
+état 54
+
+   43 BOUCLE: mc_move csti . mc_to idff LIST_INSTR mc_end
+
+    mc_to  décalage et aller à l'état 75
+
+
+état 55
+
+   41 BOUCLE: mc_move idff . mc_to idff LIST_INSTR mc_end
+   42       | mc_move idff . mc_to csti LIST_INSTR mc_end
+
+    mc_to  décalage et aller à l'état 76
+
+
+état 56
+
+   44 AFFECTATION: idff aff . EXPRESSION point
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 78
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 57
+
+    1 S: mc_ident mc_prog idff point mc_data mc_work LIST_DEC mc_proc LIST_INSTR mc_stopr .
+
+    $défaut  réduction par utilisation de la règle 1 (S)
+
+
+état 58
+
+   22 LIST_INSTR: INSTR LIST_INSTR .
+
+    $défaut  réduction par utilisation de la règle 22 (LIST_INSTR)
+
+
+état 59
+
+   11 A: idff aff CST point .
+
+    $défaut  réduction par utilisation de la règle 11 (A)
+
+
+état 60
+
+   21 DEC_TAB: idff mc_line csti virg mc_size . csti
+
+    csti  décalage et aller à l'état 79
+
+
+état 61
+
+   29 LECTURE: mc_acc parG gui1 . SIGNE gui2 deup arob idff parD point
+
+    doll  décalage et aller à l'état 80
+    ecom  décalage et aller à l'état 81
+    pcen  décalage et aller à l'état 82
+    hash  décalage et aller à l'état 83
+
+    SIGNE  aller à l'état 84
+
+
+état 62
+
+   30 ECRITURE: mc_disp parG disp . deup LIST_IDF parD point
+   31         | mc_disp parG disp . parD point
+
+    parD  décalage et aller à l'état 85
+    deup  décalage et aller à l'état 86
+
+
+état 63
+
+   64 CONDITION: mc_non . parG EXPRESSION parD
+
+    parG  décalage et aller à l'état 87
+
+
+état 64
+
+   55 CSTE: csti .
+
+    $défaut  réduction par utilisation de la règle 55 (CSTE)
+
+
+état 65
+
+   56 CSTE: cstf .
+
+    $défaut  réduction par utilisation de la règle 56 (CSTE)
+
+
+état 66
+
+   53 C: idff .
+
+    $défaut  réduction par utilisation de la règle 53 (C)
+
+
+état 67
+
+   47 EXPRESSION: parG . EXPRESSION parD
+   48           | parG . EXPRESSION parD OPER EXPRESSION
+   60 CONDITION_COMPLEXE: parG . CONDITION parD BETA CONDITION_COMPLEXE
+   61                   | parG . CONDITION parD
+
+    mc_non  décalage et aller à l'état 63
+    csti    décalage et aller à l'état 64
+    cstf    décalage et aller à l'état 65
+    idff    décalage et aller à l'état 66
+    parG    décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 88
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+    CONDITION   aller à l'état 89
+
+
+état 68
+
+   62 CONDITION: EXPRESSION . EQ EXPRESSION
+   63          | EXPRESSION .
+
+    mc_sup   décalage et aller à l'état 90
+    mc_inf   décalage et aller à l'état 91
+    mc_supe  décalage et aller à l'état 92
+    mc_infe  décalage et aller à l'état 93
+    mc_equi  décalage et aller à l'état 94
+    mc_diff  décalage et aller à l'état 95
+
+    $défaut  réduction par utilisation de la règle 63 (CONDITION)
+
+    EQ  aller à l'état 96
+
+
+état 69
+
+   45 EXPRESSION: C . OPER EXPRESSION
+   46           | C .
+
+    add   décalage et aller à l'état 97
+    sous  décalage et aller à l'état 98
+    mult  décalage et aller à l'état 99
+    divi  décalage et aller à l'état 100
+
+    $défaut  réduction par utilisation de la règle 46 (EXPRESSION)
+
+    OPER  aller à l'état 101
+
+
+état 70
+
+   54 C: CSTE .
+
+    $défaut  réduction par utilisation de la règle 54 (C)
+
+
+état 71
+
+   38 IF_STAT: mc_if parG CONDITIONS . parD deup LIST_INSTR B
+
+    parD  décalage et aller à l'état 102
+
+
+état 72
+
+   57 CONDITIONS: CONDITION_SIMPLE .
+
+    $défaut  réduction par utilisation de la règle 57 (CONDITIONS)
+
+
+état 73
+
+   58 CONDITIONS: CONDITION_COMPLEXE .
+
+    $défaut  réduction par utilisation de la règle 58 (CONDITIONS)
+
+
+état 74
+
+   59 CONDITION_SIMPLE: CONDITION .
+
+    $défaut  réduction par utilisation de la règle 59 (CONDITION_SIMPLE)
+
+
+état 75
+
+   43 BOUCLE: mc_move csti mc_to . idff LIST_INSTR mc_end
+
+    idff  décalage et aller à l'état 103
+
+
+état 76
+
+   41 BOUCLE: mc_move idff mc_to . idff LIST_INSTR mc_end
+   42       | mc_move idff mc_to . csti LIST_INSTR mc_end
+
+    csti  décalage et aller à l'état 104
+    idff  décalage et aller à l'état 105
+
+
+état 77
+
+   47 EXPRESSION: parG . EXPRESSION parD
+   48           | parG . EXPRESSION parD OPER EXPRESSION
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 106
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 78
+
+   44 AFFECTATION: idff aff EXPRESSION . point
+
+    point  décalage et aller à l'état 107
+
+
+état 79
+
+   21 DEC_TAB: idff mc_line csti virg mc_size csti .
+
+    $défaut  réduction par utilisation de la règle 21 (DEC_TAB)
+
+
+état 80
+
+   37 SIGNE: doll .
+
+    $défaut  réduction par utilisation de la règle 37 (SIGNE)
+
+
+état 81
+
+   34 SIGNE: ecom .
+
+    $défaut  réduction par utilisation de la règle 34 (SIGNE)
+
+
+état 82
+
+   36 SIGNE: pcen .
+
+    $défaut  réduction par utilisation de la règle 36 (SIGNE)
+
+
+état 83
+
+   35 SIGNE: hash .
+
+    $défaut  réduction par utilisation de la règle 35 (SIGNE)
+
+
+état 84
+
+   29 LECTURE: mc_acc parG gui1 SIGNE . gui2 deup arob idff parD point
+
+    gui2  décalage et aller à l'état 108
+
+
+état 85
+
+   31 ECRITURE: mc_disp parG disp parD . point
+
+    point  décalage et aller à l'état 109
+
+
+état 86
+
+   30 ECRITURE: mc_disp parG disp deup . LIST_IDF parD point
+
+    idff  décalage et aller à l'état 110
+
+    LIST_IDF  aller à l'état 111
+
+
+état 87
+
+   64 CONDITION: mc_non parG . EXPRESSION parD
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 112
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 88
+
+   47 EXPRESSION: parG EXPRESSION . parD
+   48           | parG EXPRESSION . parD OPER EXPRESSION
+   62 CONDITION: EXPRESSION . EQ EXPRESSION
+   63          | EXPRESSION .
+
+    mc_sup   décalage et aller à l'état 90
+    mc_inf   décalage et aller à l'état 91
+    mc_supe  décalage et aller à l'état 92
+    mc_infe  décalage et aller à l'état 93
+    mc_equi  décalage et aller à l'état 94
+    mc_diff  décalage et aller à l'état 95
+    parD     décalage et aller à l'état 113
+
+    parD  [réduction par utilisation de la règle 63 (CONDITION)]
+
+    EQ  aller à l'état 96
+
+
+état 89
+
+   60 CONDITION_COMPLEXE: parG CONDITION . parD BETA CONDITION_COMPLEXE
+   61                   | parG CONDITION . parD
+
+    parD  décalage et aller à l'état 114
+
+
+état 90
+
+   65 EQ: mc_sup .
+
+    $défaut  réduction par utilisation de la règle 65 (EQ)
+
+
+état 91
+
+   66 EQ: mc_inf .
+
+    $défaut  réduction par utilisation de la règle 66 (EQ)
+
+
+état 92
+
+   67 EQ: mc_supe .
+
+    $défaut  réduction par utilisation de la règle 67 (EQ)
+
+
+état 93
+
+   68 EQ: mc_infe .
+
+    $défaut  réduction par utilisation de la règle 68 (EQ)
+
+
+état 94
+
+   69 EQ: mc_equi .
+
+    $défaut  réduction par utilisation de la règle 69 (EQ)
+
+
+état 95
+
+   70 EQ: mc_diff .
+
+    $défaut  réduction par utilisation de la règle 70 (EQ)
+
+
+état 96
+
+   62 CONDITION: EXPRESSION EQ . EXPRESSION
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 115
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 97
+
+   49 OPER: add .
+
+    $défaut  réduction par utilisation de la règle 49 (OPER)
+
+
+état 98
+
+   50 OPER: sous .
+
+    $défaut  réduction par utilisation de la règle 50 (OPER)
+
+
+état 99
+
+   51 OPER: mult .
+
+    $défaut  réduction par utilisation de la règle 51 (OPER)
+
+
+état 100
+
+   52 OPER: divi .
+
+    $défaut  réduction par utilisation de la règle 52 (OPER)
+
+
+état 101
+
+   45 EXPRESSION: C OPER . EXPRESSION
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 116
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 102
+
+   38 IF_STAT: mc_if parG CONDITIONS parD . deup LIST_INSTR B
+
+    deup  décalage et aller à l'état 117
+
+
+état 103
+
+   43 BOUCLE: mc_move csti mc_to idff . LIST_INSTR mc_end
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 118
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 104
+
+   42 BOUCLE: mc_move idff mc_to csti . LIST_INSTR mc_end
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 119
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 105
+
+   41 BOUCLE: mc_move idff mc_to idff . LIST_INSTR mc_end
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 120
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 106
+
+   47 EXPRESSION: parG EXPRESSION . parD
+   48           | parG EXPRESSION . parD OPER EXPRESSION
+
+    parD  décalage et aller à l'état 113
+
+
+état 107
+
+   44 AFFECTATION: idff aff EXPRESSION point .
+
+    $défaut  réduction par utilisation de la règle 44 (AFFECTATION)
+
+
+état 108
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 . deup arob idff parD point
+
+    deup  décalage et aller à l'état 121
+
+
+état 109
+
+   31 ECRITURE: mc_disp parG disp parD point .
+
+    $défaut  réduction par utilisation de la règle 31 (ECRITURE)
+
+
+état 110
+
+   32 LIST_IDF: idff . virg LIST_IDF
+   33         | idff .
+
+    virg  décalage et aller à l'état 122
+
+    $défaut  réduction par utilisation de la règle 33 (LIST_IDF)
+
+
+état 111
+
+   30 ECRITURE: mc_disp parG disp deup LIST_IDF . parD point
+
+    parD  décalage et aller à l'état 123
+
+
+état 112
+
+   64 CONDITION: mc_non parG EXPRESSION . parD
+
+    parD  décalage et aller à l'état 124
+
+
+état 113
+
+   47 EXPRESSION: parG EXPRESSION parD .
+   48           | parG EXPRESSION parD . OPER EXPRESSION
+
+    add   décalage et aller à l'état 97
+    sous  décalage et aller à l'état 98
+    mult  décalage et aller à l'état 99
+    divi  décalage et aller à l'état 100
+
+    $défaut  réduction par utilisation de la règle 47 (EXPRESSION)
+
+    OPER  aller à l'état 125
+
+
+état 114
+
+   60 CONDITION_COMPLEXE: parG CONDITION parD . BETA CONDITION_COMPLEXE
+   61                   | parG CONDITION parD .
+
+    mc_et  décalage et aller à l'état 126
+    mc_ou  décalage et aller à l'état 127
+
+    $défaut  réduction par utilisation de la règle 61 (CONDITION_COMPLEXE)
+
+    BETA  aller à l'état 128
+
+
+état 115
+
+   62 CONDITION: EXPRESSION EQ EXPRESSION .
+
+    $défaut  réduction par utilisation de la règle 62 (CONDITION)
+
+
+état 116
+
+   45 EXPRESSION: C OPER EXPRESSION .
+
+    $défaut  réduction par utilisation de la règle 45 (EXPRESSION)
+
+
+état 117
+
+   38 IF_STAT: mc_if parG CONDITIONS parD deup . LIST_INSTR B
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 129
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 118
+
+   43 BOUCLE: mc_move csti mc_to idff LIST_INSTR . mc_end
+
+    mc_end  décalage et aller à l'état 130
+
+
+état 119
+
+   42 BOUCLE: mc_move idff mc_to csti LIST_INSTR . mc_end
+
+    mc_end  décalage et aller à l'état 131
+
+
+état 120
+
+   41 BOUCLE: mc_move idff mc_to idff LIST_INSTR . mc_end
+
+    mc_end  décalage et aller à l'état 132
+
+
+état 121
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup . arob idff parD point
+
+    arob  décalage et aller à l'état 133
+
+
+état 122
+
+   32 LIST_IDF: idff virg . LIST_IDF
+
+    idff  décalage et aller à l'état 110
+
+    LIST_IDF  aller à l'état 134
+
+
+état 123
+
+   30 ECRITURE: mc_disp parG disp deup LIST_IDF parD . point
+
+    point  décalage et aller à l'état 135
+
+
+état 124
+
+   64 CONDITION: mc_non parG EXPRESSION parD .
+
+    $défaut  réduction par utilisation de la règle 64 (CONDITION)
+
+
+état 125
+
+   48 EXPRESSION: parG EXPRESSION parD OPER . EXPRESSION
+
+    csti  décalage et aller à l'état 64
+    cstf  décalage et aller à l'état 65
+    idff  décalage et aller à l'état 66
+    parG  décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 136
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+
+
+état 126
+
+   72 BETA: mc_et .
+
+    $défaut  réduction par utilisation de la règle 72 (BETA)
+
+
+état 127
+
+   71 BETA: mc_ou .
+
+    $défaut  réduction par utilisation de la règle 71 (BETA)
+
+
+état 128
+
+   60 CONDITION_COMPLEXE: parG CONDITION parD BETA . CONDITION_COMPLEXE
+
+    parG  décalage et aller à l'état 137
+
+    CONDITION_COMPLEXE  aller à l'état 138
+
+
+état 129
+
+   38 IF_STAT: mc_if parG CONDITIONS parD deup LIST_INSTR . B
+
+    mc_else  décalage et aller à l'état 139
+    mc_end   décalage et aller à l'état 140
+
+    B  aller à l'état 141
+
+
+état 130
+
+   43 BOUCLE: mc_move csti mc_to idff LIST_INSTR mc_end .
+
+    $défaut  réduction par utilisation de la règle 43 (BOUCLE)
+
+
+état 131
+
+   42 BOUCLE: mc_move idff mc_to csti LIST_INSTR mc_end .
+
+    $défaut  réduction par utilisation de la règle 42 (BOUCLE)
+
+
+état 132
+
+   41 BOUCLE: mc_move idff mc_to idff LIST_INSTR mc_end .
+
+    $défaut  réduction par utilisation de la règle 41 (BOUCLE)
+
+
+état 133
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup arob . idff parD point
+
+    idff  décalage et aller à l'état 142
+
+
+état 134
+
+   32 LIST_IDF: idff virg LIST_IDF .
+
+    $défaut  réduction par utilisation de la règle 32 (LIST_IDF)
+
+
+état 135
+
+   30 ECRITURE: mc_disp parG disp deup LIST_IDF parD point .
+
+    $défaut  réduction par utilisation de la règle 30 (ECRITURE)
+
+
+état 136
+
+   48 EXPRESSION: parG EXPRESSION parD OPER EXPRESSION .
+
+    $défaut  réduction par utilisation de la règle 48 (EXPRESSION)
+
+
+état 137
+
+   60 CONDITION_COMPLEXE: parG . CONDITION parD BETA CONDITION_COMPLEXE
+   61                   | parG . CONDITION parD
+
+    mc_non  décalage et aller à l'état 63
+    csti    décalage et aller à l'état 64
+    cstf    décalage et aller à l'état 65
+    idff    décalage et aller à l'état 66
+    parG    décalage et aller à l'état 77
+
+    EXPRESSION  aller à l'état 68
+    C           aller à l'état 69
+    CSTE        aller à l'état 70
+    CONDITION   aller à l'état 89
+
+
+état 138
+
+   60 CONDITION_COMPLEXE: parG CONDITION parD BETA CONDITION_COMPLEXE .
+
+    $défaut  réduction par utilisation de la règle 60 (CONDITION_COMPLEXE)
+
+
+état 139
+
+   40 B: mc_else . deup LIST_INSTR mc_end
+
+    deup  décalage et aller à l'état 143
+
+
+état 140
+
+   39 B: mc_end .
+
+    $défaut  réduction par utilisation de la règle 39 (B)
+
+
+état 141
+
+   38 IF_STAT: mc_if parG CONDITIONS parD deup LIST_INSTR B .
+
+    $défaut  réduction par utilisation de la règle 38 (IF_STAT)
+
+
+état 142
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup arob idff . parD point
+
+    parD  décalage et aller à l'état 144
+
+
+état 143
+
+   40 B: mc_else deup . LIST_INSTR mc_end
+
+    mc_acc   décalage et aller à l'état 33
+    mc_disp  décalage et aller à l'état 34
+    mc_if    décalage et aller à l'état 35
+    mc_move  décalage et aller à l'état 36
+    idff     décalage et aller à l'état 37
+
+    $défaut  réduction par utilisation de la règle 23 (LIST_INSTR)
+
+    LIST_INSTR   aller à l'état 145
+    INSTR        aller à l'état 39
+    LECTURE      aller à l'état 40
+    ECRITURE     aller à l'état 41
+    IF_STAT      aller à l'état 42
+    BOUCLE       aller à l'état 43
+    AFFECTATION  aller à l'état 44
+
+
+état 144
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup arob idff parD . point
+
+    point  décalage et aller à l'état 146
+
+
+état 145
+
+   40 B: mc_else deup LIST_INSTR . mc_end
+
+    mc_end  décalage et aller à l'état 147
+
+
+état 146
+
+   29 LECTURE: mc_acc parG gui1 SIGNE gui2 deup arob idff parD point .
+
+    $défaut  réduction par utilisation de la règle 29 (LECTURE)
+
+
+état 147
+
+   40 B: mc_else deup LIST_INSTR mc_end .
+
+    $défaut  réduction par utilisation de la règle 40 (B)

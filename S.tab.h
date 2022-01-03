@@ -62,40 +62,36 @@
      mc_line = 278,
      mc_size = 279,
      mc_acc = 280,
-     mc_type = 281,
-     mc_disp = 282,
-     mc_if = 283,
-     mc_else = 284,
-     mc_move = 285,
-     mc_to = 286,
-     mc_end = 287,
-     csti = 288,
-     cstf = 289,
-     cstch = 290,
-     cstst = 291,
-     pvg = 292,
-     egal = 293,
-     aff = 294,
-     add = 295,
-     sous = 296,
-     mult = 297,
-     divi = 298,
-     idff = 299,
-     point = 300,
-     parG = 301,
-     parD = 302,
-     sepv = 303,
-     virg = 304,
-     deup = 305,
-     gui1 = 306,
-     gui2 = 307,
-     doll = 308,
-     apos = 309,
-     ecom = 310,
-     arob = 311,
-     pcen = 312,
-     hash = 313,
-     disp = 314
+     mc_disp = 281,
+     mc_if = 282,
+     mc_else = 283,
+     mc_move = 284,
+     mc_to = 285,
+     mc_end = 286,
+     csti = 287,
+     cstf = 288,
+     cstch = 289,
+     cstst = 290,
+     aff = 291,
+     add = 292,
+     sous = 293,
+     mult = 294,
+     divi = 295,
+     idff = 296,
+     point = 297,
+     parG = 298,
+     parD = 299,
+     sepv = 300,
+     virg = 301,
+     deup = 302,
+     gui1 = 303,
+     gui2 = 304,
+     doll = 305,
+     ecom = 306,
+     arob = 307,
+     pcen = 308,
+     hash = 309,
+     disp = 310
    };
 #endif
 
@@ -106,7 +102,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 14 "S.y"
+#line 15 "S.y"
 
 int entier;
 float reel;
@@ -115,7 +111,7 @@ char* str;
 
 
 /* Line 1676 of yacc.c  */
-#line 119 "S.tab.h"
+#line 115 "S.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

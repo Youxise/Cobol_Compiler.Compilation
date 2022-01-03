@@ -115,154 +115,8 @@ switch(choice)
 
 }
 
-int Recherche_position(char entite[])
-{
-		int i=0;
-		while(i<1000)
-		{
-		
-		if(tab1[i].state==1) if (strcmp(entite,tab1[i].name)==0) return i;	
-		i++;
-		}
- 
-		return -1;
-		
-}
-
-char* recherche_val(char entite[])
-{
- int x=Recherche_position(entite);
- if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return "";}
-
- return tab1[x].val;
-
-}
-
-float recheche_val(char entite[])
-{
- int x=Recherche_position(entite);
- if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
-
- return atof(tab1[x].val);
-
-}
-
-void modifier_val(char entite[],char val[])
-{
- int x=Recherche_position(entite);
- if(x==-1) printf("Entite n'existe pas dans la TS\n");
-
- else strcpy(tab1[x].val,val);
-
-}
 
 
-
-int verifIDF(char entite[])
-{
- int x=Recherche_position(entite);
- if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
- else if ((strcmp(tab1[x].code,"IdfCst")==0) && (strcmp(tab1[x].val,"")!=0) ) return 1;
-
-}
-
-	 void insererTYPE(char entite[], char type[])
-{
-     int pos;
-	   pos=Recherche_position(entite);
-	   if(pos!=-1)  { strcpy(tab1[pos].type,type);
-                     //printf("Insersion type: entite = %s type = %s\n",tab1[pos].name,tab1[pos].type);
-                     }
-}
-
-void insererCODE(char entite[])
-{
-     int pos;
-	   pos=Recherche_position(entite);
-	   if(pos!=-1)  { strcpy(tab1[pos].code,"IdfCst");
-                     }
-}
-
-
-
-/*
-int nbSIGNE (char chaine[],char TYPE[])
-{
-  int nb=0,i=0;
-  char Signes[]="#%&$";
-Signes[0]='#';
-  Signes[1]='%';
-  Signes[2]='&';
-  Signes[3]='$';
-
-  for (i ; i<strlen(chaine) ; i++ ) {
-    if ((chaine[i]==Signes[0])||(chaine[i]==Signes[1])||(chaine[i]==Signes[2])||(chaine[i]==Signes[3])) {
-    nb++;
-    if (chaine[i]==Signes[0]) strcpy(TYPE,"CHAR.");
-    if (chaine[i]==Signes[1]) strcpy(TYPE,"FLOAT.");
-    if (chaine[i]==Signes[2]) strcpy(TYPE,"INTEGER.");
-    if (chaine[i]==Signes[3]) strcpy(TYPE,"STRING.");
-    if (nb>1) return -1;
-    }
-  }
-
-  if (nb==1) return 1;
-    else return -1;
-
-}
-
-
-*/
-
-int  nbSIGNE (char chaine[], char (*types)[9])
-{
-  int nb=0,i;
-
-  for (i=0 ; i<strlen(chaine); i++ ) {
-    if (chaine[i]=='%') {strcpy(types[nb],"CHAR."); nb++;}
-    if (chaine[i]=='#') {strcpy(types[nb],"FLOAT."); nb++;}
-    if (chaine[i]=='&') {strcpy(types[nb],"INTEGER."); nb++;}
-    if (chaine[i]=='$') {strcpy(types[nb],"STRING."); nb++;}
-    
-    }
-  
-  return nb;
-}
-
-
-
-char * TypeEntite(char entite[])
-	{
-	int pos;
-	
-  pos=Recherche_position(entite);
-
-  return tab1[pos].type;
-
-}  
-	
-	int doubleDeclaration(char entite[])
-	{
-	int pos;
-	pos=Recherche_position(entite);
-	if(strcmp(tab1[pos].type,"")==0) return 0;
-	   else return -1;
-	  
-  }
-	
- void majType(char (*noms)[9],char t[],int n)
-  {
-    int j;
-    //printf("Je suis dans la TS 1: n = %d type = %s\n",n,t);
-    for(j=0;j<n;j++)
-    {
-      insererTYPE(noms[j],t);
-      //k=Recherche_position(noms[j]);
-      //printf("Je suis dans la TS: entite = %s k= %d\n",noms[j],k);
-      //if(k!=-1) {strcpy(tab1[k].type,t);}// printf("Je suis dans la TS: type de entite = %s est = %s\n",tab1[k].name,tab1[k].type);}
-      //else printf("Entite n'existe pas dans la TS\n");
-    }
-	}
 
 void afficher()
 {int i;
@@ -277,7 +131,7 @@ for(i=0;i<1000;i++)
 	//strcpy(tab1[i].type,"type");
     if(tab1[i].state==1)
       { 
-        printf("\t|          %10s           |%15s | %12s | %12s\n",tab1[i].name,tab1[i].code,tab1[i].type,tab1[i].val);
+        printf("\t|          %10s           |%15s | %12s |%12s\n",tab1[i].name,tab1[i].code,tab1[i].type,tab1[i].val);
          
       }
 }
@@ -310,4 +164,180 @@ for(i=0;i<40;i++)
       }
 
 }
+
+
+
+void removePar (char entite[]) {
+
+  if (entite[0]=='(') {
+                  entite[0]=' ';
+                  entite[strlen(entite)-1]=' ';
+  }
+}
+
+
+int Recherche_position(char entite[])
+{
+		int i=0;
+		while(i<1000)
+		{
+		
+		if(tab1[i].state==1) if (strcmp(entite,tab1[i].name)==0) return i;	
+		i++;
+		}
+ 
+		return -1;
+		
+}
+
+
+
+char* recherche_val(char entite[])
+{
+ int x=Recherche_position(entite);
+ if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return "";}
+
+ return tab1[x].val;
+
+}
+
+
+
+float recheche_val(char entite[])
+{
+ int x=Recherche_position(entite);
+ if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
+
+ return atof(tab1[x].val);
+
+}
+
+
+
+
+void modifier_val(char entite[],char val[])
+{
+ int x=Recherche_position(entite);
+ if(x==-1) printf("Entite n'existe pas dans la TS\n");
+
+ else strcpy(tab1[x].val,val);
+
+}
+
+
+
+void modifier_val2(char entite[],char entite2[])
+{
+ int x=Recherche_position(entite);
+ int y=Recherche_position(entite2);
+ if((x==-1)||(y==-1)) printf("Entite n'existe pas dans la TS\n");
+
+ else strcpy(tab1[x].val,tab1[y].val);
+
+}
+
+/*void modifier_val3(char entite[],char entite2[],char entite3[],int b,int c)
+{
+  int result;
+  char buf4[25];
+ int x=Recherche_position(entite);
+ int y=Recherche_position(entite2);
+ int z=Recherche_position(entite3);
+ if((x==-1)||(y==-1)||(z==-1)) printf("Entite n'existe pas dans la TS\n");
+
+ else { char val1[10];
+        char val2[10];
+        strcpy(val1,tab1[y].val);
+        strcpy(val2,tab1[z].val);
+        if (c==1) {
+          int v1=atoi(val1);
+          int v2=atoi(val2);
+          if (b==1) {
+          result= v1+v2;
+          printf("result : %d\n",result);
+          sprintf (buf4,"%d",result);
+          strcpy(tab1[x].val,buf4);
+          printf ("buf : %s\n",buf4);
+          }
+        }
+      }
+  
+
+}
+*/
+
+int verifIDF(char entite[])
+{
+ int x=Recherche_position(entite);
+ if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
+ else if ((strcmp(tab1[x].code,"IdfCst")==0) && (strcmp(tab1[x].val,"")!=0) ) return 1;
+
+}
+
+
+
+
+	 void insererTYPE(char entite[], char type[])
+{
+     int pos;
+	   pos=Recherche_position(entite);
+	   if(pos!=-1)  { strcpy(tab1[pos].type,type);
+                     //printf("Insersion type: entite = %s type = %s\n",tab1[pos].name,tab1[pos].type);
+                     }
+}
+
+
+
+
+
+void insererCODE(char entite[])
+{
+     int pos;
+	   pos=Recherche_position(entite);
+	   if(pos!=-1)  { strcpy(tab1[pos].code,"IdfCst");
+                     }
+}
+
+
+
+
+int  nbSIGNE (char chaine[], char (*types)[9])
+{
+  int nb=0,i;
+
+  for (i=0 ; i<strlen(chaine); i++ ) {
+    if (chaine[i]=='%') {strcpy(types[nb],"CHAR."); nb++;}
+    if (chaine[i]=='#') {strcpy(types[nb],"FLOAT."); nb++;}
+    if (chaine[i]=='&') {strcpy(types[nb],"INTEGER."); nb++;}
+    if (chaine[i]=='$') {strcpy(types[nb],"STRING."); nb++;}
+    
+    }
+  
+  return nb;
+}
+
+
+
+
+char * TypeEntite(char entite[])
+	{
+	int pos;
+	
+  pos=Recherche_position(entite);
+
+  return tab1[pos].type;
+}  
+
+
+
+	
+int doubleDeclaration(char entite[])
+	{
+	int pos;
+	pos=Recherche_position(entite);
+	if(strcmp(tab1[pos].type,"")==0) return 0;
+	   else return -1;
+	  
+  }
+	
 

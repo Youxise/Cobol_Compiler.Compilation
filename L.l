@@ -4,15 +4,16 @@
 #include<string.h>
 #include"S.tab.h"
 #include"T.h"
-int yylineo=1;
+int yylineo=1,i;
 extern col;
+char cst[25];
 extern YYSTYPE yylval;
 %}
 chiffre [0-9]
 chiffrenonNUL [1-9]
 lettremin [a-z]
 lettremaj [A-Z]
-com #(.|\n)*!
+com \#[^!]*\!
 idf {lettremaj}({lettremin}|{chiffre})*
 cstint 0|{chiffrenonNUL}{chiffre}*|"("[-+]{chiffrenonNUL}{chiffre}*")"
 cstfloat 0|(0|{chiffrenonNUL}{chiffre}*)"."{chiffre}+|"("[-+](0|{chiffrenonNUL}{chiffre}*)"."{chiffre}+")"
@@ -20,7 +21,10 @@ cstchar \'.\'
 cststr \"(.|\n)*\"
 dispstr \”(.+)\“
 %%
-{com}
+{com} 	{ for( i=0;i<strlen(yytext);i++){
+				if(yytext[i] == '\n' ) { yylineo++; col=1;}
+										}
+		}
 "IDENTIFICATION DIVISION." 	 { 	  
 									rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_ident; }
@@ -97,7 +101,7 @@ SIZE						 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext); return mc_size; }
 
 TYPE						 { 		rechercher(yytext,"Mot cle","","",1);
-									col=col+strlen(yytext); return mc_type; }
+									col=col+strlen(yytext); 				 }
 
 ACCEPT						 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_acc; }
@@ -121,14 +125,8 @@ TO							 { 		rechercher(yytext,"Mot cle","","",1);
 END							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_end; }
 
-";" 						 { 		rechercher(yytext,"Point virgule","","",2);
-									col=col+strlen(yytext);	return pvg; }
-
 ":" 						 { 		rechercher(yytext,"Deux points","","",2);
 									col=col+strlen(yytext);	return deup;}
-
-"==" 						 { 		rechercher(yytext,"Egal","","",2);	
-									col=col+strlen(yytext);	return egal; }
 
 "=" 						 { 		rechercher(yytext,"Affectation","","",2);
 									col=col+strlen(yytext);	return aff; }
@@ -182,9 +180,6 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 "”"							{ 		rechercher(yytext,"Guillemet fermant","","",2);
 									col=col+strlen(yytext);  return gui2;}
 
-"'"							{ 		rechercher(yytext,"Apostrophe","","",2);
-									col=col+strlen(yytext);  return apos;}
-
 ","							 { 		rechercher(yytext,"Virgule","","",2);
 									col=col+strlen(yytext); return virg; }
 
@@ -195,17 +190,21 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 								return disp;}	
 
 {cstint} 					 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
-															rechercher(yytext,"Cst","INTEGER.",yytext,0);
+															
+															strcpy(cst,yytext);	removePar(cst);
+															rechercher(yytext,"Cst","INTEGER.",cst,0);
 															col=col+strlen(yytext);
-															yylval.entier=atoi(yytext); 
+															yylval.entier=atoi(cst); 
 															return csti;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
 {cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
-									rechercher(yytext,"Cst","FLOAT.",yytext,0);
+
+									strcpy(cst,yytext);	removePar(cst);
+									rechercher(yytext,"Cst","FLOAT.",cst,0);
 									col=col+strlen(yytext);
-									yylval.reel=atof(yytext);	
+									yylval.reel=atof(cst);
 									return cstf;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																			}
@@ -226,7 +225,7 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 													return idff;  }
 							  else { printf ("<< Erreur lexicale ( IDF trop long ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
 
-[ \t] col=col+strlen(yytext);
-\n { yylineo++; col=1; }
+[ \t] 	col=col+strlen(yytext);
+\n 		{ yylineo++; col=1; }
 . printf("<< Erreur lexicale, ligne : %d, colonne : %d : %s >>\n",yylineo,col,yytext);
 %%

@@ -12,7 +12,7 @@ CUTE ERRORS :
 ****rendre la colonne : valeur dans la TS en STRING ( retirer l'initialisation des idf a 0 )
 
 
-- display sans idf
+- ***display sans idf
 - ****atoi/atof ne prend pas en compte les nombres negatifs
 - ****Division sur 0 ( a refaire, idf=0 )
 - ***Incompatibilite ( bug la TS, exp arithmetiques, signe de display )
@@ -23,7 +23,8 @@ CUTE ERRORS :
 
 
 
-
+if ( T[i].op==1) result = T[i-1].entier/T[i+1].entier
+if ( T[i].op==0) i=i+2;
 
 
 
