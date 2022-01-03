@@ -199,7 +199,7 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
-									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }
+									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 
 {cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
@@ -207,6 +207,7 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
+									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																			}
 
 {cstchar} 					 { 		rechercher(yytext,"Cst","CHAR.","",0);
@@ -223,9 +224,9 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }
-							  else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
+							  else { printf ("<< Erreur lexicale ( IDF trop long ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
 
 [ \t] col=col+strlen(yytext);
 \n { yylineo++; col=1; }
-. printf(" Erreur lexicale, ligne : %d, colonne : %d : %s \n",yylineo,col,yytext);
+. printf("<< Erreur lexicale, ligne : %d, colonne : %d : %s >>\n",yylineo,col,yytext);
 %%

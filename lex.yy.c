@@ -1108,7 +1108,7 @@ YY_RULE_SETUP
 															col=col+strlen(yytext);
 															yylval.entier=atoi(yytext); 
 															return csti;	 }
-									else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }
+									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
 	YY_BREAK
 case 55:
@@ -1119,11 +1119,12 @@ YY_RULE_SETUP
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);	
 									return cstf;	 }
+									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																			}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 212 "L.l"
+#line 213 "L.l"
 { 		rechercher(yytext,"Cst","CHAR.","",0);
 									col=col+strlen(yytext);
 									yylval.str=strdup(yytext);	
@@ -1131,7 +1132,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 217 "L.l"
+#line 218 "L.l"
 { 	    rechercher(yytext,"Cst","STRING.","",0);
 							        col=col+strlen(yytext);	
 									yylval.str=strdup(yytext);
@@ -1139,34 +1140,34 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 222 "L.l"
+#line 223 "L.l"
 { if (yyleng<9) { 		rechercher(yytext,"IDF","","",0);
 													col=col+strlen(yytext);
 													yylval.str=strdup(yytext);		
 													return idff;  }
-							  else { printf (" Erreur lexicale, ligne %d, colonne %d : %s ",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
+							  else { printf ("<< Erreur lexicale ( IDF trop long ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }	 }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 228 "L.l"
+#line 229 "L.l"
 col=col+strlen(yytext);
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 229 "L.l"
+#line 230 "L.l"
 { yylineo++; col=1; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 230 "L.l"
-printf(" Erreur lexicale, ligne : %d, colonne : %d : %s \n",yylineo,col,yytext);
+#line 231 "L.l"
+printf("<< Erreur lexicale, ligne : %d, colonne : %d : %s >>\n",yylineo,col,yytext);
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 231 "L.l"
+#line 232 "L.l"
 ECHO;
 	YY_BREAK
-#line 1170 "lex.yy.c"
+#line 1171 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2052,5 +2053,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 231 "L.l"
+#line 232 "L.l"
 
