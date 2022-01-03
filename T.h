@@ -230,11 +230,15 @@ void modifier_val2(char entite[],char entite2[])
 {
  int x=Recherche_position(entite);
  int y=Recherche_position(entite2);
+
+
  if((x==-1)||(y==-1)) printf("Entite n'existe pas dans la TS\n");
 
  else strcpy(tab1[x].val,tab1[y].val);
+ 
 
 }
+
 
 /*void modifier_val3(char entite[],char entite2[],char entite3[],int b,int c)
 {
@@ -270,6 +274,7 @@ int verifIDF(char entite[])
 {
  int x=Recherche_position(entite);
  if(x==-1) {printf("Entite n'existe pas dans la TS\n"); return -1;}
+
  else if ((strcmp(tab1[x].code,"IdfCst")==0) && (strcmp(tab1[x].val,"")!=0) ) return 1;
 
 }
@@ -281,8 +286,9 @@ int verifIDF(char entite[])
 {
      int pos;
 	   pos=Recherche_position(entite);
+
 	   if(pos!=-1)  { strcpy(tab1[pos].type,type);
-                     //printf("Insersion type: entite = %s type = %s\n",tab1[pos].name,tab1[pos].type);
+
                      }
 }
 
@@ -335,6 +341,7 @@ int doubleDeclaration(char entite[])
 	{
 	int pos;
 	pos=Recherche_position(entite);
+  
 	if(strcmp(tab1[pos].type,"")==0) return 0;
 	   else return -1;
 	  

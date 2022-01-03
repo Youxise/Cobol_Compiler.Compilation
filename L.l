@@ -5,6 +5,7 @@
 #include"S.tab.h"
 #include"T.h"
 int yylineo=1,i;
+char tmp[20];
 extern col;
 extern YYSTYPE yylval;
 %}
@@ -191,11 +192,10 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 {cstint} 					 { 		if ((atoi(yytext)>-32768)&&(atoi(yytext)<32767)) {
 															
 															removePar(yytext);
-															rechercher(yytext,"Cst","INTEGER.",yytext,0);
+															sprintf(tmp,"%d",atoi(yytext)); 
+															rechercher(tmp,"Cst","INTEGER.",tmp,0);
 															col=col+strlen(yytext);
-															yylval.entier=atoi(yytext);
-															printf ("yytext : %s\n",yytext);
-															
+															yylval.entier=atoi(yytext);															
 															return csti;	 }
 									else { printf ("<< Erreur lexicale ( Depassement de valeur ), ligne %d, colonne %d : %s >>\n",yylineo,col,yytext);	col=col+strlen(yytext); }
 																		 }
@@ -203,7 +203,8 @@ END							 { 		rechercher(yytext,"Mot cle","","",1);
 {cstfloat} 					 { 		if ((atof(yytext)>-32768)&&(atof(yytext)<32767)) {
 
 									removePar(yytext);
-									rechercher(yytext,"Cst","FLOAT.",yytext,0);
+									sprintf(tmp,"%f",atof(yytext));
+									rechercher(tmp,"Cst","FLOAT.",tmp,0);
 									col=col+strlen(yytext);
 									yylval.reel=atof(yytext);
 									return cstf;	 }

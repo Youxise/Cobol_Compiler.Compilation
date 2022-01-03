@@ -107,17 +107,26 @@ INSTR : AFFECTATION | IF_STAT | BOUCLE | LECTURE | ECRITURE
 LECTURE : mc_acc parG gui1 SIGNE gui2 deup arob idff parD point { if (doubleDeclaration($8)==0)                   printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$8);
                                                                   if (strcmp((char*)TypeEntite($8),sigtype)!=0)   printf ("<< Erreur semantique ( Incompatibilite de types dans ACCEPT), ligne %d, colonne %d : %s >>\n",yylineo,col,$8);
                                                                   }
+;
+
+
+
+SIGNE : ecom      { strcpy(sigtype,"STRING.");  }
+      | hash      { strcpy(sigtype,"CHAR.");    }
+      | pcen      { strcpy(sigtype,"FLOAT.");   }
+      | doll      { strcpy(sigtype,"INTEGER."); }
+;
+
+
 
 ECRITURE : mc_disp parG disp deup LIST_IDF parD point { 
                                                         m=nbSIGNE($3,types);
-                                                       //printf("nb de types dans display =%d\n",n);
-                                                       //printf("nb de idf dans display =%d\n",j);
+
                                                         if(m>0){
                                                                 if(m!=j) printf("<< Erreur semantique (Le nombre de signes ne corresponds aux nombres de variables a afficher) ligne %d, colonne %d >>\n",yylineo,col);
                                                                 else {
                                                                       for(i=0;i<j;i++) 
                                                             {
-                                                              //printf("vars[j] =%s, Type= %s, Type[i]=%s\n",vars[j-i-1],(char*)TypeEntite(vars[j-i-1]),types[i]);
                                                               if(strcmp((char*)TypeEntite(vars[j-i-1]),types[i])!=0) 
                                                                                                       printf ("<< Erreur semantique ( Incompatibilite de types dans DISPLAY), ligne %d, colonne %d : sur l'entite %s et type %s >>\n",yylineo,col,vars[j-i-1],types[i]);
                                                             }
@@ -131,6 +140,7 @@ ECRITURE : mc_disp parG disp deup LIST_IDF parD point {
                                                         m=nbSIGNE($3,types);
                                                         if (m!=0) {printf("<< Erreur semantique ( Idf manquant ), ligne %d, colonne %d ",yylineo,col);}
           }
+;
 
 
 
@@ -147,12 +157,6 @@ LIST_IDF : idff virg LIST_IDF { strcpy(vars[j],$1);
 
 
 
-SIGNE : ecom      { strcpy(sigtype,"STRING.");  }
-      | hash      { strcpy(sigtype,"CHAR.");    }
-      | pcen      { strcpy(sigtype,"FLOAT.");   }
-      | doll      { strcpy(sigtype,"INTEGER."); }
-;
-
 IF_STAT : mc_if parG CONDITIONS parD deup LIST_INSTR B
 ;
 
@@ -167,14 +171,14 @@ BOUCLE : mc_move idff mc_to idff LIST_INSTR mc_end { if ((doubleDeclaration($2)=
 
 AFFECTATION : idff aff EXPRESSION point       { if (doubleDeclaration($1)==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$1);
                                                 else { if (verifIDF($1)==1)   printf ("<< Erreur semantique ( Constante ne peut pas changer de valeur), ligne %d, colonne %d : %s >>\n",yylineo,col,$1);
-                                                       else { if (j==1) {       printf ("types de 0 : %s\n",types[0]);
+                                                       else { if (j==1) {       
                                                                                 if(strcmp((char*)TypeEntite($1),(char*)TypeEntite(types[0]))!=0) {
                                                                                         printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,$1,types[0]);
-                                                                                                                                                  }
+                                                                                                                                                 }
                                                                                 else {  modifier_val2($1,types[0]); }
                                                                                 
                                                                                         strcpy(types[0],"");
-                                                                                        printf("apres : %s\n",types[0]);
+                                                                                       
                                                                                       
 
                                                                         }
@@ -193,9 +197,8 @@ AFFECTATION : idff aff EXPRESSION point       { if (doubleDeclaration($1)==0) pr
                                                               j=0;
                                                       }
                                               }
-                                                
-                                              // 40 | Abi |
-                                              // x + ( y / (z-(4*5))).        
+;
+    
             
 
 EXPRESSION : C OPER EXPRESSION 
