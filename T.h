@@ -312,10 +312,10 @@ int  nbSIGNE (char chaine[], char (*types)[9])
   int nb=0,i;
 
   for (i=0 ; i<strlen(chaine); i++ ) {
-    if (chaine[i]=='%') {strcpy(types[nb],"CHAR."); nb++;}
-    if (chaine[i]=='#') {strcpy(types[nb],"FLOAT."); nb++;}
-    if (chaine[i]=='&') {strcpy(types[nb],"INTEGER."); nb++;}
-    if (chaine[i]=='$') {strcpy(types[nb],"STRING."); nb++;}
+    if (chaine[i]=='&') {strcpy(types[nb],"CHAR."); nb++;}
+    if (chaine[i]=='%') {strcpy(types[nb],"FLOAT."); nb++;}
+    if (chaine[i]=='$') {strcpy(types[nb],"INTEGER."); nb++;}
+    if (chaine[i]=='#') {strcpy(types[nb],"STRING."); nb++;}
     
     }
   

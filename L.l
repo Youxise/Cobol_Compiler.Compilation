@@ -41,13 +41,13 @@ dispstr \”(.+)\“
 "PROCEDURE DIVISION."		 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_proc; }
 
-"STOP RUN"					 { 		rechercher(yytext,"Mot cle","","",1);
+"STOP RUN."					 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_stopr; }
 
-".AND."							 { 	rechercher(yytext,"Mot cle","","",1);
+"AND"							 { 	rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_et; }
 
-".OR."						 { 		rechercher(yytext,"Mot cle","","",1);
+"OR"						 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_ou; }
 
 NOT							 { 		rechercher(yytext,"Mot cle","","",1);
@@ -122,7 +122,7 @@ MOVE						 { 		rechercher(yytext,"Mot cle","","",1);
 TO							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_to; }
 
-END							 { 		rechercher(yytext,"Mot cle","","",1);
+"END."							 { 		rechercher(yytext,"Mot cle","","",1);
 									col=col+strlen(yytext);	return mc_end; }
 
 ":" 						 { 		rechercher(yytext,"Deux points","","",2);

@@ -167,6 +167,7 @@ B : mc_end
 BOUCLE : mc_move idff mc_to idff LIST_INSTR mc_end { if ((doubleDeclaration($2)==0)||(doubleDeclaration($4)==0)) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s ou %s >>\n",yylineo,col,$2,$4);}
        | mc_move idff mc_to csti LIST_INSTR mc_end { if (doubleDeclaration($2)==0)                               printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$2);}
        | mc_move csti mc_to idff LIST_INSTR mc_end { if (doubleDeclaration($4)==0)                               printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$4);}
+       | mc_move csti mc_to csti LIST_INSTR mc_end 
 ;
 
 AFFECTATION : idff aff EXPRESSION point       { if (doubleDeclaration($1)==0) printf ("<< Erreur semantique ( Idf non declaree ), ligne %d, colonne %d : %s >>\n",yylineo,col,$1);
@@ -282,7 +283,7 @@ CONDITION : EXPRESSION EQ EXPRESSION          { for(n=1;n<j;n++) {
                                                 strcpy(types[0],"");
                                                 j=0;
                                                }
-          | mc_non parG EXPRESSION parD       { for(n=1;n<j;n++) {
+          | mc_non parG CONDITION parD       { for(n=1;n<j;n++) {
                                                                   if(strcmp((char*)TypeEntite(types[0]),(char*)TypeEntite(types[n]))!=0) {
                                                                             printf ("<< Erreur semantique ( Incompatibilite de types), ligne %d, colonne %d : entre %s et %s >>\n",yylineo,col,types[0],types[n]);
                                                                                                                                           }
